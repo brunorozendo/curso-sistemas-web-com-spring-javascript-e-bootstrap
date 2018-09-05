@@ -1,0 +1,51 @@
+
+/* Dados do projeto*/
+group = "com.brunorozendo"
+version = "1.0"
+
+
+/**
+*  Obrigatório: Configuração para o próprio gradle
+*/
+buildscript {
+    repositories repositorioLocal
+}
+
+/**
+*  Obrigatório: Precisa informar onde buscar as dependencias
+*/
+repositories repositorioLocal
+
+
+
+apply plugin: 'war'
+//apply from: 'config/plugins/jetty.gradle'
+//apply from: 'config/plugins/tomcat.gradle'
+apply from: 'config/plugins/checkstyle.gradle'
+apply from: 'config/plugins/sonar.gradle'
+
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+
+/**
+*  Obrigatório: Simples configuração para garantir o encode
+*/
+tasks.withType(JavaCompile) {
+  options.encoding = "UTF-8"
+}
+
+
+
+dependencies {
+    compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.2-b02'
+
+
+    compile 'org.apache.logging.log4j:log4j-core:2.9.1'
+    compile 'org.apache.logging.log4j:log4j-api:2.9.1'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.9.1'
+    compile 'org.slf4j:jcl-over-slf4j:1.7.25'
+
+}

@@ -1,0 +1,35 @@
+
+buildscript {
+    repositories repositorioLocal
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:2.0.0'
+    }
+}
+
+
+apply plugin: org.akhikhl.gretty.GrettyPlugin
+
+
+dependencies {
+    gretty group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    gretty group: 'org.apache.tomcat', name: 'tomcat-dbcp', version: '8.0.23'   //necessário para o tomcat embarcado
+}
+
+
+/** Servidores externos, adicionar as seguintes bibliotecas:
+ *  Tomcat:
+ *      apache-tomcat-9.0.11/lib/postgresql-42.2.5.jar
+ */
+
+/**
+ * Datasource
+ *  src/main/webapp/META-INF/context.xml
+ */
+
+
+
+gretty {
+    servletContainer = 'tomcat8'
+    contextPath = '/'
+    enableNaming = true
+}

@@ -1,0 +1,39 @@
+
+buildscript {
+    repositories repositorioLocal
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:2.0.0'
+    }
+}
+
+
+apply plugin: org.akhikhl.gretty.GrettyPlugin
+
+
+dependencies {
+    gretty group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    gretty group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0' //necessário para o jetty embarcado
+}
+
+
+/** Servidores externos, adicionar as seguintes bibliotecas:
+ *  Jetty:
+ *      jetty-distribution-9.4.12.v20180830/lib/ext/postgresql-42.2.5.jar
+ *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-dbcp2-2.5.0.jar
+ *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-pool2-2.6.0.jar
+ *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-logging-1.2.jar
+ */
+
+/**
+ * Datasource
+ *  src/main/webapp/WEB-INF/jetty-env.xml
+ */
+
+
+
+
+gretty {
+    //servletContainer = 'tomcat8' //comentar essa linha caso queira executar o jetty por linha de comando
+    contextPath = '/'
+    enableNaming = true
+}

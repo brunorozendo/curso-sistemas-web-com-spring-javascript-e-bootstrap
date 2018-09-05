@@ -1,0 +1,9 @@
+
+
+
+
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = "8.12"
+}

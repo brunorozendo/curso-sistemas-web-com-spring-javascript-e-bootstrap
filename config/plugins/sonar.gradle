@@ -1,0 +1,11 @@
+buildscript {
+    repositories repositorioLocal
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+    }
+}
+
+
+System.setProperty("sonar.host.url", "http://localhost:9000")
+
+apply plugin:  org.sonarqube.gradle.SonarQubePlugin
