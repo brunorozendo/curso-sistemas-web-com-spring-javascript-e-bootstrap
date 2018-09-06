@@ -11,9 +11,22 @@
     <div th:text="${messagem}"></div>
     <form method="post">
 
-        <label for="sku">SKU</label> <div th:text="${sku}"></div>
+        <label for="sku">SKU</label>
         <br />
         <input type="text" name="sku" id="sku">
+        <br />
+
+        <label for="nome">Nome</label>
+        <br />
+        <input type="text" name="nome" id="nome">
+        <br />
+
+        <label for="descricao">Descrição</label>
+        <br />
+        <textarea name="descricao" id="descricao" cols="50" rows="10"></textarea>
+        <br />
+
+
         <input type="submit" >
     </form>
 
