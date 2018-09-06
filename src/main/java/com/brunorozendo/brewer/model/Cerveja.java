@@ -1,7 +1,10 @@
 package com.brunorozendo.brewer.model;
 
+import javax.validation.constraints.NotBlank;
+
 public class Cerveja {
 
+  @NotBlank
   private String sku;
   private String nome;
 

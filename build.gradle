@@ -51,8 +51,8 @@ sourceSets {
 
 
 dependencies {
+
     compileOnly "javax.servlet:javax.servlet-api:${servletVersion}"
-    compileOnly "javax.servlet.jsp:javax.servlet.jsp-api:${jspVersion}"
 
     compile ("org.springframework:spring-webmvc:${springVersion}") {
         exclude group: 'commons-logging', module: 'commons-logging'
@@ -64,5 +64,7 @@ dependencies {
 
     compile "ch.qos.logback:logback-classic:${logback}"
     compile "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
+
+    compile "org.hibernate.validator:hibernate-validator:${hibernatewValidatorVersion}"
 
 }

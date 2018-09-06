@@ -60,7 +60,7 @@ public class JdbcDataSourceExample extends HttpServlet {
     if (ds != null) {
       try (Connection conn = ds.getConnection()) {
         if (out != null) {
-          out.print("<h2>conectou.</h2>");
+          out.print("<h2>" + conn.getSchema() + "</h2>");
         }
       } catch (SQLException e) {
         logger.debug(e.getMessage());
