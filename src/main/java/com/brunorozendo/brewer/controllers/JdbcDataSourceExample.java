@@ -1,4 +1,4 @@
-package controllers;
+package com.brunorozendo.brewer.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +19,12 @@ import org.slf4j.LoggerFactory;
 
 @WebServlet("/JDBCDataSourceExample")
 public class JdbcDataSourceExample extends HttpServlet {
-  private static final long serialVersionUID = 1L;
-
 
   private final Logger logger = LoggerFactory.getLogger(JdbcDataSourceExample.class);
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
-      ServletException, IOException {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)   {
+
     response.setContentType("text/html");
 
     PrintWriter out = null;

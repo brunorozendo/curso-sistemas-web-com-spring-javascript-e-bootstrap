@@ -3,7 +3,7 @@
 
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
     <New class="org.eclipse.jetty.plus.jndi.Resource">
-        <Arg></Arg>
+        <Arg />
         <Arg>jdbc/brewer</Arg>
         <Arg>
             <New class="org.apache.commons.dbcp2.BasicDataSource">

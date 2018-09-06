@@ -1,0 +1,21 @@
+buildscript {
+    ext {
+        servletVersion = "3.1.0"
+        jspVersion = "2.3.2-b02"
+
+        checkstyleVersion = "8.12"
+        grettyVersion = "2.0.0"
+        postgresqlVersion = "42.2.5"
+        dbcp2 = "2.5.0"
+        tomcatDbcp = "8.5.33"
+        sonarVersion = "2.6.2"
+
+
+
+        springVersion = "4.3.18.RELEASE"
+        logback = "0.9.26"
+        slf4jVersion = "1.7.25"
+    }
+}
+
+

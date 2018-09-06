@@ -1,7 +1,7 @@
 buildscript {
     repositories repositorioLocal
     dependencies {
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarVersion}"
     }
 }
 
