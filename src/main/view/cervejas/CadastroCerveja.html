@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,8 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+    <div th:text="${messagem}"></div>
     <form method="post">
-        <label for="sku">SKU</label>
+
+        <label for="sku">SKU</label> <div th:text="${sku}"></div>
+        <br />
         <input type="text" name="sku" id="sku">
         <input type="submit" >
     </form>

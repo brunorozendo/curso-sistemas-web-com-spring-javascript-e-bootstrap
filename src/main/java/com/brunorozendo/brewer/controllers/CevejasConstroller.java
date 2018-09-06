@@ -5,9 +5,11 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CevejasConstroller {
@@ -38,12 +40,16 @@ public class CevejasConstroller {
    * @return String a pagina atual
    */
   @PostMapping("cervejas/novo")
-  public String cadastrar(@Valid Cerveja cerveja, BindingResult result) {
+  public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model,
+                          RedirectAttributes redirectAttributes) {
     if (result.hasErrors()) {
       result.getAllErrors().forEach(o -> logger.error(o.getDefaultMessage()));
+      model.addAttribute("messagem", "com erro");
+      return Paginas.CADASTRO.toString();
     }
+    redirectAttributes.addFlashAttribute("messagem", "sucesso!");
     logger.info(cerveja.getSku());
-    return Paginas.CADASTRO.toString();
+    return "redirect:/cervejas/novo";
   }
 
 }
