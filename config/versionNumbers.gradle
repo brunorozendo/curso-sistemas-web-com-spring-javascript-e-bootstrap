@@ -13,8 +13,10 @@ buildscript {
 
 
         springVersion = "4.3.18.RELEASE"
+        thymeleafVersion = "3.0.9.RELEASE"
         logback = "0.9.26"
         slf4jVersion = "1.7.25"
+
     }
 }
 

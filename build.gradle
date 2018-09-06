@@ -30,6 +30,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 
+
 /**
 *  Obrigatório: Simples configuração para garantir o encode
 */
@@ -37,6 +38,16 @@ tasks.withType(JavaCompile) {
   options.encoding = "UTF-8"
 }
 
+/**
+ * Pasta especifica paraq ficar os views(html's)
+ */
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/view'
+        }
+    }
+}
 
 
 dependencies {
@@ -46,6 +57,9 @@ dependencies {
     compile ("org.springframework:spring-webmvc:${springVersion}") {
         exclude group: 'commons-logging', module: 'commons-logging'
     }
+
+    compile "org.thymeleaf:thymeleaf:${thymeleafVersion}"
+    compile "org.thymeleaf:thymeleaf-spring5:${thymeleafVersion}"
 
 
     compile "ch.qos.logback:logback-classic:${logback}"
