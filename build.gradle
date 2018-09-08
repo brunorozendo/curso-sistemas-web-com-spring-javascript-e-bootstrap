@@ -39,7 +39,7 @@ tasks.withType(JavaCompile) {
 }
 
 /**
- * Pasta especifica paraq ficar os views(html's)
+ * Pasta especifica para as views(html's)
  */
 sourceSets {
     main {
