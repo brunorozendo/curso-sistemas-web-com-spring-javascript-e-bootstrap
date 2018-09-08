@@ -29,15 +29,52 @@ public class CevejasConstroller {
     }
   }
 
+
+  /**
+   * Carrega a p&aacute;gina de cadastro e cerveja.
+   *
+   * @param  model
+   *         objeto necess&aacute;rio para trafegar as mensagens/objetos para a tela
+   *
+   * @return  {@code String} url da pa&#x1f5;ina atual
+   *
+   * @since 3.4
+   *
+   * @see    Cerveja
+   * @see    Model
+   */
   @GetMapping("cervejas/novo")
-  public String novo() {
+  public String novo(Model model) {
+    model.addAttribute(new Cerveja());
     return Paginas.CADASTRO.toString();
   }
 
-  /*** Cadastro de cerveja.
-   * @param cerveja  vindo da tela
-   * @param result resultato da valida&ccedil;&atilde;o do em cima do primeiro parametro (cerveja)
-   * @return String a pagina atual
+
+
+  /**
+   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
+   *
+   * @param  cerveja
+   *         objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
+   *
+   * @param  result
+   *         objeto que cont&eacute;m as informa&ccedil;&otilde;es do a valida&ccedil;&atilde;o
+   *         do parametro cerveja
+   *
+   * @param  model
+   *         objeto necess&aacute;rio para trafegar as mensagens/objetos para a tela
+   *
+   * @param  redirectAttributes
+   *         objeto necess&aacute;rio trafegar as mensagem enjtre as telas
+   *
+   * @return  {@code String} url da pa&#x1f5;ina atual
+   *
+   * @since 3.4
+   *
+   * @see    Cerveja
+   * @see    BindingResult
+   * @see    Model
+   * @see    RedirectAttributes
    */
   @PostMapping("cervejas/novo")
   public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model,

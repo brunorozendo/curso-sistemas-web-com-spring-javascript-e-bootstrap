@@ -9,21 +9,30 @@
 </head>
 <body>
     <div th:text="${messagem}"></div>
-    <form method="post">
+
+
+
+    <form method="post" th:object="${cerveja}" >
+
+        <div th:text="${#fields.hasAnyErrors()}"></div>
+
+        <div th:each="error : ${#fields.detailedErrors('${cerveja.*}')}">
+            <p th:text="${error}"></p>
+        </div>
 
         <label for="sku">SKU</label>
         <br />
-        <input type="text" name="sku" id="sku">
+        <input type="text" name="sku" id="sku" th:field="*{sku}" />
         <br />
 
         <label for="nome">Nome</label>
         <br />
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome" th:field="*{nome}">
         <br />
 
         <label for="descricao">Descrição</label>
         <br />
-        <textarea name="descricao" id="descricao" cols="50" rows="10"></textarea>
+        <textarea name="descricao" id="descricao" cols="50" rows="10" th:field="*{descricao}"></textarea>
         <br />
 
 
