@@ -8,11 +8,11 @@
     <title th:insert="~{${view} :: title}"></title>
 
     <th:block th:replace="~{${view} :: |prependCSS|} ?: ~{}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/stylesheets/vendors/bootstrap-datepicker.standalone.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/brewer/stylesheets/vendors.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/brewer/stylesheets/algaworks.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/brewer/stylesheets/application.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/stylesheets/brewer.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/stylesheets/vendors/bootstrap-datepicker.standalone.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/brewer/stylesheets/brewer.css}"/>
     <th:block th:replace="~{${view} :: |appendCSS|} ?: ~{}"/>
 
 
