@@ -1,6 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.model.Cerveja;
+import java.util.HashMap;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -44,9 +46,13 @@ public class CevejasConstroller {
    * @see    Model
    */
   @GetMapping("cervejas/novo")
-  public String novo(Model model) {
+  public ModelAndView novo(Model model) {
     model.addAttribute(new Cerveja());
-    return Paginas.CADASTRO.toString();
+    HashMap<String, Object> data = new HashMap<>();
+    data.put("view", Paginas.CADASTRO.toString());
+
+    return new ModelAndView("layout.html", data);
+
   }
 
 
@@ -77,16 +83,22 @@ public class CevejasConstroller {
    * @see    RedirectAttributes
    */
   @PostMapping("cervejas/novo")
-  public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model,
+  public ModelAndView novo(@Valid Cerveja cerveja, BindingResult result, Model model,
                           RedirectAttributes redirectAttributes) {
     if (result.hasErrors()) {
       result.getAllErrors().forEach(o -> logger.error(o.getDefaultMessage()));
-      model.addAttribute("messagem", "com erro");
-      return Paginas.CADASTRO.toString();
+
+
+      HashMap<String, Object> data = new HashMap<>();
+      data.put("view", Paginas.CADASTRO.toString());
+      data.put("messagem", "com erro");
+
+      return new ModelAndView("layout.html", data);
+
     }
     redirectAttributes.addFlashAttribute("messagem", "sucesso!");
     logger.info(cerveja.getSku());
-    return "redirect:/cervejas/novo";
+    return new ModelAndView("redirect:/cervejas/novo");
   }
 
 }

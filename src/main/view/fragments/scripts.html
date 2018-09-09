@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<th:block th:fragment="scripts">
+
+
+    <th:block th:replace="~{${view} :: |prependJS|} ?: ~{}"/>
+
+    <script th:src="@{/assets/brewer/javascripts/vendors.min.js}"></script>
+    <script th:src="@{/assets/brewer/javascripts/algaworks.min.js}"></script>
+
+    <!-- <script th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script> -->
+    <script th:src="@{/assets/javascripts/vendors/jquery.masknumber.min.js}"></script>
+    <script th:src="@{/assets/javascripts/vendors/jquery.mask.min.js}"></script>
+
+    <script th:src="@{/assets/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/assets/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
+
+    <script th:src="@{/assets/javascripts/vendors/numeral.min.js}"></script>
+    <script th:src="@{/assets/javascripts/vendors/pt-br.min.js}"></script>
+
+    <script th:src="@{/assets/javascripts/brewer.js}"></script>
+    <script th:src="@{/assets/javascripts/brewer.dialogo-excluir.js}"></script>
+
+    <th:block th:replace="~{${view} :: |appendJS|} ?: ~{}"/>
+
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+<th:block th:fragment="errors">
+    <div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <th:block th:each="erro : ${#fields.detailedErrors()}">
+            <div><i class="fa  fa-exclamation-circle"></i> [[${erro.message}]]</div>
+        </th:block>
+    </div>
+</th:block>
+
+
+<th:block th:fragment="message">
+    <div class="alert  alert-dismissible"
+         role="alert"
+         th:if="${(not #strings.isEmpty(message)) and (not #strings.isEmpty(messageType))}"
+         th:classappend="|alert-${messageType}|">
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div><i class="fa  fa-exclamation-circle"></i>
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+</th:block>
+
+
+</body>
+</html>

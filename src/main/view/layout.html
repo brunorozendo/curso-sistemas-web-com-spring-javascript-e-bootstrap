@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}" th:whith="view=${view}"></head>
+<body>
+
+    <th:block th:replace="~{${view} :: |prependBody|} ?: ~{}"/>
+
+    <div class="aw-layout-loading  js-loading-overlay">
+        <div class="aw-layout-loading__container">
+            <span class="aw-balls-spinner">Carregando...</span>
+        </div>
+    </div>
+
+    <div class="aw-layout-page">
+
+        <th:block th:replace="~{fragments/nav :: header}"/>
+
+        <th:block th:replace="~{fragments/nav :: aside}"/>
+
+        <section class="aw-layout-content  js-content">
+
+            <div class="page-header">
+                <div class="container-fluid">
+                    <h1 th:insert="~{${view} :: title}">Titulo Págin</h1>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+
+                <th:block th:replace="~{${view} :: content}"/>
+            </div>
+
+            <script>
+                function excluir() {
+                    swal({
+                        title: "Tem certeza?",
+                        text: "Você não poderá recuperar o produto após a exclusão.",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Sim, exclua agora!",
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true
+                    }, function () {
+                        setTimeout(function () {
+                            swal("Excluído!", "O produto foi excluído com sucesso.", "success");
+                        }, 2000);
+                    });
+                }
+            </script>
+
+        </section>
+
+        <footer class="aw-layout-footer  js-content">
+            <div class="container-fluid">
+                <span class="aw-footer-disclaimer">&copy; 2016 AlgaWorks. Todos os direitos reservados.</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <div class="aw-search-modal  js-search-modal">
+        <form action="#" class="aw-search-modal__form">
+            <input class="aw-search-modal__input  js-search-modal-input" type="text"
+                   placeholder="O que você está procurando?"/>
+            <div class="aw-search-modal__input-icon">
+                <i class="glyphicon  glyphicon-search  js-search-modal-go"></i>
+            </div>
+        </form>
+
+        <div class="aw-search-modal__controls">
+            <i class="glyphicon glyphicon-remove  js-search-modal-close"></i>
+        </div>
+    </div>
+
+    <th:block th:replace="~{fragments/scripts:: scripts}" th:whith="view=${view}" />
+
+    <th:block th:replace="~{${view} :: |appendBody|} ?: ~{}"/>
+
+</body>
+</html>
