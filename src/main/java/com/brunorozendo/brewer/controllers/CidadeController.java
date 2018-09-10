@@ -1,7 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.model.Usuario;
+import com.brunorozendo.brewer.model.Cidade;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,47 +13,48 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @SuppressWarnings("unused")
 @Controller
-@RequestMapping("/usuarios")
-public class UsuarioController extends UtilController {
+@RequestMapping("/cidades")
+public class CidadeController extends UtilController {
 
-  private static final String VIEW_FORM_CADASTRO = "/usuario/CadastroUsuario";
-  private static final String URL_FORM_CADASTRO = "/usuarios/novo";
 
+  private static final String VIEW_FORM_CADASTRO = "/cidade/CadastroCidade";
+  private static final String URL_FORM_CADASTRO = "/cidades/novo";
 
   /**
-   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
+   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cidade.
    *
-   * @param usuario carrega uma instanacia nova na tela
+   * @param cidade carrega uma instância do objecto na tela
    * @return {@code ModelAndView}  pa&#x1f5;ina atual
-   * @see Usuario
-   * @since 5.11
+   * @see Cidade
+   * @see BindingResult
+   * @see RedirectAttributes
+   * @since 5.13
    */
   @GetMapping("/novo")
-  public ModelAndView index(Usuario usuario) {
+  public ModelAndView index(Cidade cidade) {
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 
 
 
-
   /**
-   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
+   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cidade.
    *
-   * @param usuario            objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
+   * @param cidade            objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
    * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es do a
-   *                           valida&ccedil;&atilde;o do parametro usuario
+   *                           valida&ccedil;&atilde;o do parametro cerveja
    * @param redirectAttributes objeto necess&aacute;rio trafegar as mensagem enjtre as telas
-   * @return {@code ModelAndView}  pa&#x1f5;ina atual
-   * @see Usuario
+   * @return {@code ModelAndView} url da pa&#x1f5;ina atual
+   * @see Cidade
    * @see BindingResult
    * @see RedirectAttributes
-   * @since 5.11
+   * @since 3.4
    */
   @PostMapping("/novo")
-  public ModelAndView salve(@Valid Usuario usuario, BindingResult result, RedirectAttributes
+  public ModelAndView salve(@Valid Cidade cidade, BindingResult result, RedirectAttributes
       redirectAttributes) {
     if (result.hasErrors()) {
-      return index(usuario);
+      return index(cidade);
     }
     redirectAttributes.addFlashAttribute("msg", "com sucesso");
     return redirect(URL_FORM_CADASTRO);

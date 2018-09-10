@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="title">Cadastro Cidade</th:block>
+
+<th:block th:fragment="content">
+
+
+    <form class="form-vertical  js-form-loading" th:object="${cidade}" th:action="@{/cidades/novo}" method="post">
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" class="form-control" th:field="*{estado}">
+                        <option value="">Selecione o estado</option>
+                        <option th:each="estado : ${estados}" th:value="${estado.codigo}" th:text="${estado.nome}">São
+                            Paulo
+                        </option>
+                    </select>
+                    <p th:each="error: ${#fields.errors('estado')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+                    <p th:each="error: ${#fields.errors('nome')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a th:href="@{pesquisa-produtos.html}" class="btn  btn-default">Cancelar</a>
+            <a th:href="@{/}" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+        </div>
+
+    </form>
+
+</th:block>
+
+
+</body>
+</html>

@@ -31,7 +31,6 @@ public class CevejasConstroller extends UtilController {
    * @see Model
    * @since 3.4
    */
-  @SuppressWarnings("unused")
   @GetMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(Cerveja cerveja) {
     return modelAndView(VIEW_FORM_CADASTRO);
@@ -54,7 +53,6 @@ public class CevejasConstroller extends UtilController {
    * @see RedirectAttributes
    * @since 3.4
    */
-  @SuppressWarnings("unused")
   @PostMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(@Valid Cerveja cerveja, BindingResult result, Model model,
                            RedirectAttributes redirectAttributes) {
