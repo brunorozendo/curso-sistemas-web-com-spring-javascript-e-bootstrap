@@ -105,9 +105,9 @@ Brewer.recuperarValor = function(valorFormatado) {
 }
 
 $(function() {
-	var maskMoney = new Brewer.MaskMoney();
+	let maskMoney = new Brewer.MaskMoney();
 	maskMoney.enable();
-	
+	/*
 	var maskPhoneNumber = new Brewer.MaskPhoneNumber();
 	maskPhoneNumber.enable();
 	
@@ -119,5 +119,5 @@ $(function() {
 	
 	var security = new Brewer.Security();
 	security.enable();
-	
+	*/
 });

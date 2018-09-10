@@ -1,4 +1,4 @@
-var Brewer = Brewer || {};
+let Brewer = Brewer || {};
 
 Brewer.EstiloCadastroRapido = (function() {
 	
@@ -14,9 +14,9 @@ Brewer.EstiloCadastroRapido = (function() {
 	EstiloCadastroRapido.prototype.iniciar = function() {
 		this.form.on('submit', function(event) { event.preventDefault() });
 		this.modal.on('shown.bs.modal', onModalShow.bind(this));
-		this.modal.on('hide.bs.modal', onModalClose.bind(this))
+		this.modal.on('hide.bs.modal', onModalClose.bind(this));
 		this.botaoSalvar.on('click', onBotaoSalvarClick.bind(this));
-	}
+	};
 	
 	function onModalShow() {
 		this.inputNomeEstilo.focus();
@@ -29,7 +29,7 @@ Brewer.EstiloCadastroRapido = (function() {
 	}
 	
 	function onBotaoSalvarClick() {
-		var nomeEstilo = this.inputNomeEstilo.val().trim();
+		let nomeEstilo = this.inputNomeEstilo.val().trim();
 		$.ajax({
 			url: this.url,
 			method: 'POST',
@@ -41,14 +41,14 @@ Brewer.EstiloCadastroRapido = (function() {
 	}
 	
 	function onErroSalvandoEstilo(obj) {
-		var mensagemErro = obj.responseText;
+		let mensagemErro = obj.responseText;
 		this.containerMensagemErro.removeClass('hidden');
 		this.containerMensagemErro.html('<span>' + mensagemErro + '</span>');
 		this.form.find('.form-group').addClass('has-error');
 	}
 	
 	function onEstiloSalvo(estilo) {
-		var comboEstilo = $('#estilo');
+		let comboEstilo = $('#estilo');
 		comboEstilo.append('<option value=' + estilo.codigo + '>' + estilo.nome + '</option>');
 		comboEstilo.val(estilo.codigo);
 		this.modal.modal('hide');
@@ -59,6 +59,6 @@ Brewer.EstiloCadastroRapido = (function() {
 }());
 
 $(function() {
-	var estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
+	let estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
 	estiloCadastroRapido.iniciar();
 });
