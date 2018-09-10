@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="title">Cadastro Estilo</th:block>
+
+<th:block th:fragment="content">
+
+    <form class="form-vertical  js-form-loading" th:object="${estilo}" th:action="@{/estilos/novo}" method="post">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+                    <label for="nome" class="control-label">Nome</label>
+                    <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+                    <span class="help-block" th:each="error: ${#fields.errors('nome')}" th:text="${error}">Please correct the error</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a th:href="@{pesquisa-produtos.html}" class="btn  btn-default">Cancelar</a>
+            <a th:href="@{/}" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+        </div>
+
+    </form>
+
+</th:block>
+
+
+</body>
+</html>

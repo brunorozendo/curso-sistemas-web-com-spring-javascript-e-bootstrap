@@ -1,9 +1,10 @@
 package com.brunorozendo.brewer.model;
 
+import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class Cerveja {
+public class Cerveja  implements Serializable {
 
   @NotBlank
   private String sku;
