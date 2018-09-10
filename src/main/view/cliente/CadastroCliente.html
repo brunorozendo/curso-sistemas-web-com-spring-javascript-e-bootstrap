@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<th:block th:fragment="title" th:remove="tag">Cadastro Cliente</th:block>
+
+<th:block th:fragment="content">
+    <form class="form-vertical  js-form-loading" th:object="${cliente}" th:action="@{/clientes/novo}" method="post">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+                    <p th:each="error: ${#fields.errors('nome')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Tipo de Pessoa</label>
+                    <div>
+                        <th:block th:each="tipoPessoa : ${tipoPessoa}">
+                            <div class="radio radio-inline">
+                                <input type="radio" th:field="*{tipoPessoa}" th:value="${tipoPessoa}"/>
+                                <label class="control-label" th:text="${tipoPessoa.descricao}">Física</label>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="cpfOuCnpj">CPF/CNMP</label>
+                    <input id="cpfOuCnpj" type="text" class="form-control" th:field="*{cpfOuCnpj}"/>
+                    <p th:each="error: ${#fields.errors('cpfOuCnpj')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input id="telefone" type="text" class="form-control" th:field="*{telefone}"/>
+                    <p th:each="error: ${#fields.errors('telefone')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" class="form-control" th:field="*{email}"/>
+                    <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="logradouro">Logradouro</label>
+                    <input id="logradouro" type="text" class="form-control" th:field="*{endereco.logradouro}"/>
+                    <p th:each="error: ${#fields.errors('endereco.logradouro')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input id="numero" type="text" class="form-control" th:field="*{endereco.numero}"/>
+                    <p th:each="error: ${#fields.errors('endereco.numero')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input id="complemento" type="text" class="form-control" th:field="*{endereco.complemento}"/>
+                    <p th:each="error: ${#fields.errors('endereco.complemento')}" th:text="${error}">Validation
+                        error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input id="cep" type="text" class="form-control" th:field="*{endereco.cep}"/>
+                    <p th:each="error: ${#fields.errors('endereco.cep')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" class="form-control" th:field="*{endereco.estado}">
+                        <option value="">Selecione o estado</option>
+                        <option th:each="estado : ${estados}" th:value="${estado.codigo}" th:text="${estado.nome}">São
+                            Paulo
+                        </option>
+                    </select>
+                    <p th:each="error: ${#fields.errors('endereco.estado')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <select id="cidade" class="form-control" th:field="*{endereco.estado}">
+                        <option value="">Selecione o estado</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a th:href="@{pesquisa-produtos.html}" class="btn  btn-default">Cancelar</a>
+            <a th:href="@{/}" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+        </div>
+
+    </form>
+
+</th:block>
+
+
+
+
+
+
+</body>
+</html>
