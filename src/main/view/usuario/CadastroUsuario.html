@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<th:block th:fragment="title">Cadastro Usuario</th:block>
+
+<th:block th:fragment="content">
+
+
+    <form class="form-vertical  js-form-loading" th:object="${usuario}" th:action="@{/usuarios/novo}" method="post">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+                    <p th:each="error: ${#fields.errors('nome')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" class="form-control" th:field="*{email}"/>
+                    <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nacimento</label>
+                    <input id="dataNascimento" type="text" class="form-control" th:field="*{dataNascimento}"/>
+                    <p th:each="error: ${#fields.errors('dataNascimento')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input id="senha" type="text" class="form-control" th:field="*{senha}"/>
+                    <p th:each="error: ${#fields.errors('senha')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="confirmacaoSenha">Confirmação Senha</label>
+                    <input id="confirmacaoSenha" type="text" class="form-control" th:field="*{confirmacaoSenha}"/>
+                    <p th:each="error: ${#fields.errors('confirmacaoSenha')}" th:text="${error}">Validation error</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Status</label>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="status"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <fieldset>
+            <legend>Grupos</legend>
+            <div class="row">
+                <div class="control-group">
+                    <label class="col-sm-1 control-label">Admin</label>
+                    <div class="controls col-sm-1">
+                        <input type="checkbox" name="admin"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="col-sm-1  control-label">Vendedor</label>
+                    <div class="controls col-sm-1 ">
+                        <input type="checkbox" name="vendedor"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a th:href="@{pesquisa-produtos.html}" class="btn  btn-default">Cancelar</a>
+            <a th:href="@{/}" class="btn  btn-link  aw-btn-link-danger" onclick="excluir()">Excluir este produto</a>
+        </div>
+
+    </form>
+
+</th:block>
+
+<th:block th:fragment="appendJS">
+    <script th:src="@{/assets/javascripts/vendors/bootstrap-switch.min.js}"></script>
+    <script>
+        $(function () {
+            $("[type='checkbox']").bootstrapSwitch();
+        });
+    </script>
+</th:block>
+
+<th:block th:fragment="appendCSS">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/stylesheets/vendors/bootstrap-switch.min.css}"/>
+</th:block>
+
+
+</body>
+</html>

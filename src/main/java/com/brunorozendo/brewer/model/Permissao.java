@@ -1,14 +1,10 @@
 package com.brunorozendo.brewer.model;
 
-import javax.validation.constraints.NotBlank;
-
-public class Estado {
+public class Permissao {
 
   private Long id;
-  @NotBlank
   private String nome;
-  @NotBlank
-  private String sigla;
+
 
   public Long getId() {
     return id;
@@ -24,13 +20,5 @@ public class Estado {
 
   public void setNome(String nome) {
     this.nome = nome;
-  }
-
-  public String getSigla() {
-    return sigla;
-  }
-
-  public void setSigla(String sigla) {
-    this.sigla = sigla;
   }
 }
