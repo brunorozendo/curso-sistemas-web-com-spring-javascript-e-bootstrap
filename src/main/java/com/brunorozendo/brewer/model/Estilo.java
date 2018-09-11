@@ -2,27 +2,39 @@ package com.brunorozendo.brewer.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
+@Entity
+@Table(name = "tb_estilo")
 public class Estilo implements Serializable {
 
-  private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
   @NotBlank
   @Size(max = 20)
-
+  @Column(name = "tx_nome")
   private String nome;
 
+  @OneToMany(mappedBy = "estilo")
+  private Set<Cerveja> cervejas;
 
-  private List<Cerveja> cervejas;
-
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -34,13 +46,29 @@ public class Estilo implements Serializable {
     this.nome = nome;
   }
 
-  public List<Cerveja> getCervejas() {
+  public Set<Cerveja> getCervejas() {
     return cervejas;
   }
 
-  public void setCervejas(List<Cerveja> cervejas) {
+  public void setCervejas(Set<Cerveja> cervejas) {
     this.cervejas = cervejas;
   }
 
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Estilo estilo = (Estilo) o;
+    return Objects.equals(id, estilo.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

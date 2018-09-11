@@ -17,6 +17,7 @@ buildscript {
         logback = "0.9.26"
         slf4jVersion = "1.7.25"
         hibernatewValidatorVersion = "6.0.12.Final"
+        eclipseLinkVersion = "2.7.3"
     }
 }
 

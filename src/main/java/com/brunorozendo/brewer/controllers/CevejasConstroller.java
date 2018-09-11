@@ -24,11 +24,11 @@ public class CevejasConstroller extends UtilController {
   private static final String URL_FORM_CADASTRO = "/cervejas/novo";
 
   /**
-   * Carrega a p&aacute;gina de cadastro e cerveja.
+   * Carrega a p&aacute;gina de cadastro de cerveja.
    *
+   * @param cerveja ocarrega uma instância do objecto na tela
    * @return {@code String} url da pa&#x1f5;ina atual
    * @see Cerveja
-   * @see Model
    * @since 3.4
    */
   @GetMapping(URL_FORM_CADASTRO)

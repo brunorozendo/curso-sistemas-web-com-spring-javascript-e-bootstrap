@@ -21,9 +21,9 @@ public class CidadeController extends UtilController {
   private static final String URL_FORM_CADASTRO = "/cidades/novo";
 
   /**
-   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cidade.
+   * RCarrega a p&aacute;gina de cadastro da cidade.
    *
-   * @param cidade carrega uma instância do objecto na tela
+   * @param cidade carrega uma inst&acirc;ncia do objecto na tela
    * @return {@code ModelAndView}  pa&#x1f5;ina atual
    * @see Cidade
    * @see BindingResult

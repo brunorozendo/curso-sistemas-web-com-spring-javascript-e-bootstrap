@@ -21,10 +21,10 @@ public class UsuarioController extends UtilController {
 
 
   /**
-   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
+   * RCarrega a p&aacute;gina de cadastro du usu&aacute;rio.
    *
-   * @param usuario carrega uma instanacia nova na tela
-   * @return {@code ModelAndView}  pa&#x1f5;ina atual
+   * @param usuario carrega uma instanacia nova na tela.
+   * @return {@code ModelAndView}  pa&#x1f5;ina atual.
    * @see Usuario
    * @since 5.11
    */
@@ -40,8 +40,8 @@ public class UsuarioController extends UtilController {
    * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
    *
    * @param usuario            objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
-   * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es do a
-   *                           valida&ccedil;&atilde;o do parametro usuario
+   * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es do
+   *                           valida&ccedil;&atilde;o do parametro usu&aacute;rio.
    * @param redirectAttributes objeto necess&aacute;rio trafegar as mensagem enjtre as telas
    * @return {@code ModelAndView}  pa&#x1f5;ina atual
    * @see Usuario

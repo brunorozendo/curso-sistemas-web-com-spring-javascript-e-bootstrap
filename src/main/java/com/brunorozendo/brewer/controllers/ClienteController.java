@@ -19,8 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/clientes")
 public class ClienteController extends UtilController {
 
+  private static final String VIEW_FORM_CADASTRO = "/ccliente/CadastroCliente";
+  private static final String URL_FORM_CADASTRO = "/clientes/novo";
+
   /**
-   * Carrega a página de cadastro do  cliente.
+   * Carrega a p&aacute;gina de cadastro do cliente.
    *
    * @param cliente objeto que est&aacute; tela que ser&aacute; carregado na tela.
    * @return {@code String} url da pa&#x1f5;ina atual
@@ -33,7 +36,7 @@ public class ClienteController extends UtilController {
   public ModelAndView index(Cliente cliente) {
     addModel("tipoPessoa", TipoPessoa.values());
     addModel("estados", new ArrayList<Estado>());
-    return modelAndView("cliente/CadastroCliente");
+    return modelAndView(VIEW_FORM_CADASTRO);
   }
 
 
@@ -57,7 +60,7 @@ public class ClienteController extends UtilController {
       return index(cliente);
     }
     redirectAttributes.addFlashAttribute("msg", "com sucesso");
-    return redirect("/clientes/novo");
+    return redirect(URL_FORM_CADASTRO);
   }
 
 

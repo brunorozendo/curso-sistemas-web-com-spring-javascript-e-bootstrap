@@ -19,11 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EstiloController extends UtilController {
 
   /**
-   * Carrega a página de cadastro de estilo.
+   * Carrega a p&aacute;gina de cadastro de estilo.
    *
    * @param estilo objeto que est&aacute; tela que ser&aacute; carregado na tela.
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see estilo
+   * @see Estilo
    * @since 5.14
    */
   @RequestMapping("/novo")

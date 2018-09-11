@@ -39,7 +39,9 @@ tasks.withType(JavaCompile) {
 }
 
 /**
- * Pasta especifica para as views(html's)
+ * Criar um pasta que pode ser usada como se fosse a pasta "resources",
+ * mas somente para as views(html's)
+ *
  */
 sourceSets {
     main {
@@ -52,19 +54,47 @@ sourceSets {
 
 dependencies {
 
+    /**
+     *  Obrigatório
+     *  Servlet : está um a aplicação web, logo é um requisito,
+     */
     compileOnly "javax.servlet:javax.servlet-api:${servletVersion}"
 
+    /**
+     *  Obrigatório: está aplicação está contruido em cima do spring
+     *  obs: o exlude 'commons-logging' é para poder usar o slf4j
+     */
     compile ("org.springframework:spring-webmvc:${springVersion}") {
         exclude group: 'commons-logging', module: 'commons-logging'
     }
 
+
+    /**
+     *  Obrigatório
+     *  Thymeleaf: reponsável pelo preocessamento da view
+     */
     compile "org.thymeleaf:thymeleaf:${thymeleafVersion}"
     compile "org.thymeleaf:thymeleaf-spring5:${thymeleafVersion}"
 
-
+    /**
+     *  Obrigatório: logger
+     *  obs: os projetos dos spring por default usam o apache-commons-logging
+     *  JCL-OVER-SLF4J: usa a api do apache-commons-logging mas por
+     *   			   baixo dos panos chama a implementaçdo do slf4j
+     */
     compile "ch.qos.logback:logback-classic:${logback}"
     compile "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
 
+    /**
+     *  Opcional
+     *  Hibernate validator: implementação do bean validation
+     */
     compile "org.hibernate.validator:hibernate-validator:${hibernatewValidatorVersion}"
+
+    /**
+     *  Opcional
+     *  JPA: implmentação do jpa
+     */
+    compile "org.eclipse.persistence:org.eclipse.persistence.jpa:${eclipseLinkVersion}"
 
 }
