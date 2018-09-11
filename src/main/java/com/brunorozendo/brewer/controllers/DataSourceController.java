@@ -1,48 +1,43 @@
 package com.brunorozendo.brewer.controllers;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.brunorozendo.brewer.controllers.util.UtilController;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@SuppressWarnings("unused")
+@Controller
+public class DataSourceController extends UtilController {
 
-@WebServlet("/JDBCDataSourceExample")
-public class JdbcDataSourceExample extends HttpServlet {
+  private final Logger logger = LoggerFactory.getLogger(DataSourceController.class);
 
-  private final Logger logger = LoggerFactory.getLogger(JdbcDataSourceExample.class);
-
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)   {
-
-    response.setContentType("text/html");
-
-    PrintWriter out = null;
-    try {
-      out = response.getWriter();
-    } catch (IOException e) {
-      logger.debug(e.getMessage());
-    }
+  /**
+   * Teste de datasource.
+   *
+   * @return String dizendo se o datasrouce está acessivel
+   */
+  @GetMapping("/check/datasource")
+  public @ResponseBody
+  ResponseEntity<String> check() {
 
     Context initContext = null;
     DataSource ds = null;
+    String status = "error";
 
     try {
       initContext = new InitialContext();
     } catch (NamingException e) {
       logger.debug(e.getExplanation());
     }
-
 
     try {
       if (initContext != null) {
@@ -59,16 +54,15 @@ public class JdbcDataSourceExample extends HttpServlet {
     }
     if (ds != null) {
       try (Connection conn = ds.getConnection()) {
-        if (out != null) {
-          out.print("<h2>" + conn.getSchema() + "</h2>");
-        }
+        status = "sucess";
+
       } catch (SQLException e) {
         logger.debug(e.getMessage());
       }
 
     }
-
-
+    return ResponseEntity.ok(status);
   }
+
 
 }

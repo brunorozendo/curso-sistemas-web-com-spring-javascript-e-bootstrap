@@ -1,0 +1,18 @@
+
+buildscript {
+    repositories repositorioLocal
+    dependencies {
+        classpath "org.postgresql:postgresql:${postgresqlVersion}"
+        classpath "gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:${flywayVersion}"
+    }
+}
+
+
+apply plugin: org.flywaydb.gradle.FlywayPlugin
+
+
+flyway {
+    url = 'jdbc:postgresql://127.0.0.1:5432/brewer'
+    user = 'brewer'
+    password = 'admin'
+}

@@ -1,7 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.model.Estilo;
+import com.brunorozendo.brewer.controllers.dto.Estilo;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

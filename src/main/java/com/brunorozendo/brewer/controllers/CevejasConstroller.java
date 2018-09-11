@@ -1,7 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.model.Cerveja;
+import com.brunorozendo.brewer.controllers.dto.Cerveja;
 import java.util.HashMap;
 import javax.validation.Valid;
 import org.slf4j.Logger;

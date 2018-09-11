@@ -10,6 +10,7 @@ buildscript {
             dbcp2 = "2.5.0"
             tomcatDbcp = "8.5.33"
         sonarVersion = "2.6.2"
+        flywayVersion = "5.1.4"
 
         //dependêncieas
         springVersion = "4.3.18.RELEASE"
@@ -18,6 +19,7 @@ buildscript {
         slf4jVersion = "1.7.25"
         hibernatewValidatorVersion = "6.0.12.Final"
         eclipseLinkVersion = "2.7.3"
+
     }
 }
 

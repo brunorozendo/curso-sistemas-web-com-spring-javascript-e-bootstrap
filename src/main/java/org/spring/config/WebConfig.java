@@ -1,6 +1,6 @@
 package org.spring.config;
 
-import com.brunorozendo.brewer.controllers.JdbcDataSourceExample;
+import com.brunorozendo.brewer.controllers.DataSourceController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
-@ComponentScan(basePackageClasses = JdbcDataSourceExample.class)
+@ComponentScan(basePackageClasses = DataSourceController.class)
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 

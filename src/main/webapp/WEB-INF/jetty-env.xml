@@ -8,9 +8,9 @@
         <Arg>
             <New class="org.apache.commons.dbcp2.BasicDataSource">
                 <Set name="driverClassName">org.postgresql.Driver</Set>
-                <Set name="username">bruno</Set>
+                <Set name="username">brewer</Set>
                 <Set name="password">admin</Set>
-                <Set name="url">jdbc:postgresql://127.0.0.1:5432/bruno</Set>
+                <Set name="url">jdbc:postgresql://127.0.0.1:5432/brewer</Set>
             </New>
         </Arg>
     </New>
