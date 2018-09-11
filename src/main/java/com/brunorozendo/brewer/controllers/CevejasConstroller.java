@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class CevejasConstroller extends UtilController {
 
-  private final Logger logger = LoggerFactory.getLogger(JdbcDataSourceExample.class);
+  private final Logger logger = LoggerFactory.getLogger(CevejasConstroller.class);
 
   private static final String VIEW_FORM_CADASTRO = "cervejas/CadastroCerveja";
   private static final String URL_FORM_CADASTRO = "/cervejas/novo";
