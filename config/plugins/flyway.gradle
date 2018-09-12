@@ -2,10 +2,17 @@
 buildscript {
     repositories repositorioLocal
     dependencies {
-        classpath "org.postgresql:postgresql:${postgresqlVersion}"
         classpath "gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:${flywayVersion}"
+
     }
 }
+
+dependencies {
+    compile "org.postgresql:postgresql:${postgresqlVersion}"
+}
+
+System.setProperty("flyway.locations", "filesystem:src/main/scripts/migrations")
+System.setProperty("flyway.schemas","public")
 
 
 apply plugin: org.flywaydb.gradle.FlywayPlugin
@@ -16,3 +23,4 @@ flyway {
     user = 'brewer'
     password = 'admin'
 }
+

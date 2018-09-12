@@ -19,6 +19,7 @@ buildscript {
         slf4jVersion = "1.7.25"
         hibernatewValidatorVersion = "6.0.12.Final"
         eclipseLinkVersion = "2.7.3"
+        springDataVersion = "2.0.10.RELEASE"
 
     }
 }

@@ -1,7 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -52,10 +52,13 @@ public class DataSourceController extends UtilController {
         logger.debug(e2.getExplanation());
       }
     }
-    if (ds != null) {
-      try (Connection conn = ds.getConnection()) {
-        status = "sucess";
 
+    if (ds != null) {
+      String query = "SELECT version()";
+      try (ResultSet rs = ((ds.getConnection()).createStatement()).executeQuery(query)) {
+        while (rs.next()) {
+          status = rs.getString("version");
+        }
       } catch (SQLException e) {
         logger.debug(e.getMessage());
       }

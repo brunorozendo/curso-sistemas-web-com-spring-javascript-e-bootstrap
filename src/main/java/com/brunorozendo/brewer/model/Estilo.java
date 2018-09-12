@@ -1,7 +1,6 @@
 package com.brunorozendo.brewer.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;

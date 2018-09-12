@@ -98,4 +98,12 @@ dependencies {
      */
     compile "org.eclipse.persistence:org.eclipse.persistence.jpa:${eclipseLinkVersion}"
 
+
+    /**
+     *  Obrigatório: está aplicação está contruido em cima do spring-jpa
+     *  Spring-jpa: criar a maoria dos metodos de um crud Ex= findAll, findById...
+     */
+    compile "org.springframework.data:spring-data-jpa:${springDataVersion}"
+
+
 }
