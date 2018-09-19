@@ -48,9 +48,9 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="estilo" class="control-label">Estilo</label>
+                    <label for="estiloDto" class="control-label">Estilo</label>
                     <div class="bw-field-action">
-                        <select id="estilo" class="form-control">
+                        <select id="estiloDto" class="form-control">
                             <option value="0">Selecione</option>
                         </select>
                         <div class="bw-field-action__icon">
@@ -178,7 +178,7 @@
 </th:block>
 
 <th:block th:fragment="appendJS">
-    <script th:src="@{/assets/javascripts/estilo.cadastro-rapido.js}"></script>
+    <script th:src="@{/assets/javascripts/estiloDto.cadastro-rapido.js}"></script>
     <script th:src="@{/assets/javascripts/vendors/uikit.min.js}"></script>
     <script th:src="@{/assets/javascripts/vendors/upload.min.js}"></script>
     <script th:src="@{/assets/javascripts/vendors/handlebars.min.js}"></script>
@@ -197,11 +197,11 @@
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title">Cadastro de estilo</h4>
+                    <h4 class="modal-title">Cadastro de estiloDto</h4>
                 </div>
 
                 <div class="modal-body">
-                    <div class="alert  alert-danger  hidden  js-mensagem-cadastro-rapido-estilo" role="alert"></div>
+                    <div class="alert  alert-danger  hidden  js-mensagem-cadastro-rapido-estiloDto" role="alert"></div>
 
                     <form class="form-horizontal" th:action="@{/estilos}">
                         <div class="form-group">
@@ -212,7 +212,7 @@
                         </div>
                     </form>
 
-                    <button type="button" class="btn  btn-primary  js-modal-cadastro-estilo-salvar-btn">Salvar</button>
+                    <button type="button" class="btn  btn-primary  js-modal-cadastro-estiloDto-salvar-btn">Salvar</button>
                     <button type="button" class="btn  btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 package com.brunorozendo.brewer.controllers;
 
-import com.brunorozendo.brewer.controllers.dto.Estilo;
+import com.brunorozendo.brewer.controllers.dto.EstiloDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +19,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EstiloController extends UtilController {
 
   /**
-   * Carrega a p&aacute;gina de cadastro de estilo.
+   * Carrega a p&aacute;gina de cadastro de estiloDto.
    *
-   * @param estilo objeto que est&aacute; tela que ser&aacute; carregado na tela.
+   * @param estiloDto objeto que est&aacute; tela que ser&aacute; carregado na tela.
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see Estilo
+   * @see EstiloDto
    * @since 5.14
    */
   @RequestMapping("/novo")
-  public ModelAndView index(Estilo estilo) {
+  public ModelAndView index(EstiloDto estiloDto) {
     return modelAndView("estilo/CadastroEstilo");
   }
 
@@ -35,20 +35,20 @@ public class EstiloController extends UtilController {
    * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar o cliente.
    * Vindo da tala.
    *
-   * @param estilo             objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
+   * @param estiloDto             objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
    * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es da
-   *                           valida&ccedil;&atilde;o do parametro estilo.
+   *                           valida&ccedil;&atilde;o do parametro estiloDto.
    * @param redirectAttributes objeto necess&aacute;rio trafegar as mensagem enjtre as telas.
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see Estilo
+   * @see EstiloDto
    * @see BindingResult
    * @since 5.14
    */
   @PostMapping("/novo")
-  public ModelAndView salve(@Valid Estilo estilo, BindingResult result, RedirectAttributes
+  public ModelAndView salve(@Valid EstiloDto estiloDto, BindingResult result, RedirectAttributes
       redirectAttributes) {
     if (result.hasErrors()) {
-      return index(estilo);
+      return index(estiloDto);
     }
     redirectAttributes.addFlashAttribute("message", "Salvo com sucesso");
     redirectAttributes.addFlashAttribute("messageType", MESSAGE_TYPE_SUCESS);
@@ -59,21 +59,21 @@ public class EstiloController extends UtilController {
    * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar o cliente.
    * Vindo de uma requisição ajax.
    *
-   * @param estilo objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
+   * @param estiloDto objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
    * @param result objeto que cont&eacute;m as informa&ccedil;&otilde;es da
-   *               valida&ccedil;&atilde;o do parametro estilo.
+   *               valida&ccedil;&atilde;o do parametro estiloDto.
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see Estilo
+   * @see EstiloDto
    * @see BindingResult
    * @since 5.14
    */
   @PostMapping
   public @ResponseBody
-  ResponseEntity<Object> salvar(@RequestBody @Valid Estilo estilo, BindingResult result) {
+  ResponseEntity<Object> salvar(@RequestBody @Valid EstiloDto estiloDto, BindingResult result) {
     if (result.hasErrors()) {
       return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
     }
-    return ResponseEntity.ok(estilo);
+    return ResponseEntity.ok(estiloDto);
   }
 
 }
