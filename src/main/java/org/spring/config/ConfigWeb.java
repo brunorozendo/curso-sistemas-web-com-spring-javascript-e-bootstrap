@@ -20,7 +20,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 @ComponentScan(basePackageClasses = DataSourceController.class)
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
   private ApplicationContext applicationCcontext;
 

@@ -2,7 +2,8 @@ package org.spring.init;
 
 import javax.servlet.Filter;
 
-import org.spring.config.WebConfig;
+import org.spring.config.ConfigJpa;
+import org.spring.config.ConfigWeb;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -10,17 +11,17 @@ public class AppInitalizer extends AbstractAnnotationConfigDispatcherServletInit
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[0];
+    return new Class<?>[] {ConfigJpa.class};
   }
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    return new Class<?>[] { WebConfig.class};
+    return new Class<?>[] {ConfigWeb.class};
   }
 
   @Override
   protected String[] getServletMappings() {
-    return new String[] { "/" };
+    return new String[] {"/"};
   }
 
   @Override
@@ -28,6 +29,6 @@ public class AppInitalizer extends AbstractAnnotationConfigDispatcherServletInit
     CharacterEncodingFilter filter = new CharacterEncodingFilter();
     filter.setEncoding("UTF-8");
     filter.setForceEncoding(true);
-    return new Filter[] { filter };
+    return new Filter[] {filter};
   }
 }

@@ -1,4 +1,4 @@
-package com.brunorozendo.brewer.model;
+package com.brunorozendo.brewer.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -41,13 +41,13 @@ public class Cerveja implements Serializable {
   @Column(name = "nr_valor")
   private BigDecimal valor;
 
-  @Column(name = "nr_teor_acoolico")
+  @Column(name = "nr_teor_alcoolico")
   private Float teorAlcoolico;
 
   @Column(name = "nr_comissao")
   private Float comissao;
 
-  @Column(name = "nr_qtd_estoque")
+  @Column(name = "nr_quantidade_estoque")
   private Float qtdEstoque;
 
   @Enumerated(EnumType.STRING)

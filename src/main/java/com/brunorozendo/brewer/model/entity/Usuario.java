@@ -1,4 +1,4 @@
-package com.brunorozendo.brewer.model;
+package com.brunorozendo.brewer.model.entity;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,15 +1,14 @@
-package com.brunorozendo.brewer.model;
+package com.brunorozendo.brewer.model.entity;
 
 import javax.validation.constraints.NotBlank;
 
-public class Cidade {
-
+public class Estado {
 
   private Long id;
   @NotBlank
   private String nome;
   @NotBlank
-  private Estado estado;
+  private String sigla;
 
   public Long getId() {
     return id;
@@ -27,11 +26,11 @@ public class Cidade {
     this.nome = nome;
   }
 
-  public Estado getEstado() {
-    return estado;
+  public String getSigla() {
+    return sigla;
   }
 
-  public void setEstado(Estado estado) {
-    this.estado = estado;
+  public void setSigla(String sigla) {
+    this.sigla = sigla;
   }
 }

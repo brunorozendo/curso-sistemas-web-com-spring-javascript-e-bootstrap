@@ -1,2 +1,2 @@
 ALTER TABLE tb_cerveja
-  ADD COLUMN vl_quantidade_estoque INT;
+  ADD COLUMN nr_quantidade_estoque INT;

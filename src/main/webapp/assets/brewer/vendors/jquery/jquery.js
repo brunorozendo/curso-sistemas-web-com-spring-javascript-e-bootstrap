@@ -295,7 +295,7 @@ jQuery.extend( {
 
 		// Own properties are enumerated firstly, so to speed up,
 		// if last one is own, then all properties are own
-		for ( key in obj ) {}
+		for ( key in obj ) {/*do nothing*/}
 
 		return key === undefined || hasOwn.call( obj, key );
 	},

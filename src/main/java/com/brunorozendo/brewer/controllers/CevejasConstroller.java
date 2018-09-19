@@ -1,11 +1,13 @@
 package com.brunorozendo.brewer.controllers;
 
-import com.brunorozendo.brewer.controllers.util.UtilController;
 import com.brunorozendo.brewer.controllers.dto.Cerveja;
+import com.brunorozendo.brewer.controllers.util.UtilController;
+import com.brunorozendo.brewer.model.repositories.CervejaRepository;
 import java.util.HashMap;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,10 @@ public class CevejasConstroller extends UtilController {
   private static final String VIEW_FORM_CADASTRO = "cervejas/CadastroCerveja";
   private static final String URL_FORM_CADASTRO = "/cervejas/novo";
 
+  @Autowired
+  CervejaRepository cervejaRepository;
+
+
   /**
    * Carrega a p&aacute;gina de cadastro de cerveja.
    *
@@ -33,6 +39,7 @@ public class CevejasConstroller extends UtilController {
    */
   @GetMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(Cerveja cerveja) {
+    cervejaRepository.findAll();
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 

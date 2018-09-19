@@ -1,9 +1,9 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.model.Cliente;
-import com.brunorozendo.brewer.model.Estado;
-import com.brunorozendo.brewer.model.TipoPessoa;
+import com.brunorozendo.brewer.model.entity.Cliente;
+import com.brunorozendo.brewer.model.entity.Estado;
+import com.brunorozendo.brewer.model.entity.TipoPessoa;
 import java.util.ArrayList;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;

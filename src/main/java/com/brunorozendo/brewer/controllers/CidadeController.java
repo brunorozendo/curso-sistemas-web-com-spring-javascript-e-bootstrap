@@ -1,7 +1,7 @@
 package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.model.Cidade;
+import com.brunorozendo.brewer.model.entity.Cidade;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

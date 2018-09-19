@@ -8,9 +8,9 @@ CREATE TABLE tb_cerveja (
   tx_sku            VARCHAR(50)    NOT NULL,
   tx_nome           VARCHAR(80)    NOT NULL,
   tx_descricao      TEXT           NOT NULL,
-  vl_valor          DECIMAL(10, 2) NOT NULL,
-  vl_teor_alcoolico DECIMAL(10, 2) NOT NULL,
-  vl_comissao       DECIMAL(10, 2) NOT NULL,
+  nr_valor          DECIMAL(10, 2) NOT NULL,
+  nr_teor_alcoolico DECIMAL(10, 2) NOT NULL,
+  nr_comissao       DECIMAL(10, 2) NOT NULL,
   tx_sabor          VARCHAR(50)    NOT NULL,
   tx_origem         VARCHAR(50)    NOT NULL,
   id_estilo         integer        NOT NULL
