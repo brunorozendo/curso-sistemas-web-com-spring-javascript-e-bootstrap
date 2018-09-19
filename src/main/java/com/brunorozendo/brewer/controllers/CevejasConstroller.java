@@ -1,6 +1,6 @@
 package com.brunorozendo.brewer.controllers;
 
-import com.brunorozendo.brewer.controllers.dto.Cerveja;
+import com.brunorozendo.brewer.controllers.dto.CervejaDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
 import java.util.HashMap;
@@ -30,38 +30,38 @@ public class CevejasConstroller extends UtilController {
 
 
   /**
-   * Carrega a p&aacute;gina de cadastro de cerveja.
+   * Carrega a p&aacute;gina de cadastro de cervejaDto.
    *
-   * @param cerveja ocarrega uma instância do objecto na tela
+   * @param cervejaDto ocarrega uma instância do objecto na tela
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see Cerveja
+   * @see CervejaDto
    * @since 3.4
    */
   @GetMapping(URL_FORM_CADASTRO)
-  public ModelAndView novo(Cerveja cerveja) {
+  public ModelAndView novo(CervejaDto cervejaDto) {
     cervejaRepository.findAll();
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 
 
   /**
-   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cerveja.
+   * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cervejaDto.
    *
-   * @param cerveja            objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
+   * @param cervejaDto            objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado
    * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es do a
-   *                           valida&ccedil;&atilde;o do parametro cerveja
+   *                           valida&ccedil;&atilde;o do parametro cervejaDto
    * @param model              objeto necess&aacute;rio para trafegar as mensagens/objetos para a
    *                           tela
    * @param redirectAttributes objeto necess&aacute;rio trafegar as mensagem enjtre as telas
    * @return {@code String} url da pa&#x1f5;ina atual
-   * @see Cerveja
+   * @see CervejaDto
    * @see BindingResult
    * @see Model
    * @see RedirectAttributes
    * @since 3.4
    */
   @PostMapping(URL_FORM_CADASTRO)
-  public ModelAndView novo(@Valid Cerveja cerveja, BindingResult result, Model model,
+  public ModelAndView novo(@Valid CervejaDto cervejaDto, BindingResult result, Model model,
                            RedirectAttributes redirectAttributes) {
     if (result.hasErrors()) {
       result.getAllErrors().forEach(o -> logger.error(o.getDefaultMessage()));
@@ -75,7 +75,7 @@ public class CevejasConstroller extends UtilController {
 
     }
     redirectAttributes.addFlashAttribute("messagem", "sucesso!");
-    logger.info(cerveja.getSku());
+    logger.info(cervejaDto.getSku());
     return redirect(URL_FORM_CADASTRO);
   }
 
