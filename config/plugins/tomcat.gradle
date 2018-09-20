@@ -14,6 +14,7 @@ apply plugin: org.akhikhl.gretty.GrettyPlugin
 dependencies {
     compile "org.postgresql:postgresql:${postgresqlVersion}"
     compile "com.mchange:c3p0:${c3p0Version}"
+    compile "org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:${log4j2Jdbc4Version}"
 }
 
 

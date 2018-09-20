@@ -22,8 +22,8 @@ apply plugin: 'war'
 apply from: 'config/versionNumbers.gradle'
 apply from: 'config/plugins/checkstyle.gradle'
 apply from: 'config/plugins/sonar.gradle'
-apply from: 'config/plugins/jetty.gradle'
-//apply from: 'config/plugins/tomcat.gradle'
+//apply from: 'config/plugins/jetty.gradle'
+apply from: 'config/plugins/tomcat.gradle'
 apply from: 'config/plugins/flyway.gradle'
 
 

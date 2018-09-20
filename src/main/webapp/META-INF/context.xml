@@ -4,26 +4,14 @@
 
     <Resource name="jdbc/brewer"
               auth="Container"
-              driverClass="org.postgresql.Driver"
-              jdbcUrl="jdbc:postgresql://127.0.0.1:5432/brewer"
+              driverClass="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
+              jdbcUrl="jdbc:log4jdbc:postgresql://127.0.0.1:5432/brewer"
               user="brewer"
               password="admin"
               factory="org.apache.naming.factory.BeanFactory"
               type="com.mchange.v2.c3p0.ComboPooledDataSource"
               maxPoolSize="50"
               minPoolSize="15"
-              acquireIncrement="3"
-              acquireRetryAttempts = "0"
-              acquireRetryDelay = "3000"
-              breakAfterAcquireFailure = "false"
-              maxConnectionAge = "60"
-              maxIdleTime = "30"
-              maxIdleTimeExcessConnections = "10"
-              idleConnectionTestPeriod = "15"
-              testConnectionOnCheckout = "true"
-              preferredTestQuery = "SELECT version()"
-              debugUnreturnedConnectionStackTraces = "true"
-              autoCommitOnClose="true"
     />
 
 
