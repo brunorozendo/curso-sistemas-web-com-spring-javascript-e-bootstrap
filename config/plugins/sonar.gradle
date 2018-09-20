@@ -1,4 +1,5 @@
 buildscript {
+    //noinspection GroovyAssignabilityCheck
     repositories repositorioLocal
     dependencies {
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarVersion}"

@@ -2,6 +2,7 @@ package org.spring.config;
 
 import com.brunorozendo.brewer.model.entity.Cerveja;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
@@ -23,13 +24,14 @@ public class ConfigJpa {
    * cria um datasrouce baseado no jndi "jdbc/brewer".
    */
   @Bean
-  public DataSource dataSource() {
+  public ComboPooledDataSource dataSource() {
     JndiDataSourceLookup dataSourceLookup = new JndiDataSourceLookup();
     dataSourceLookup.setResourceRef(true);
-    return dataSourceLookup.getDataSource("jdbc/brewer");
+    return (ComboPooledDataSource) dataSourceLookup.getDataSource("jdbc/brewer");
   }
 
   /**
+   * A
    * necessário para o spring data jpa nãoo gerar o erro
    * <code>No bean named 'transactionManager' is defined</code>.
    */

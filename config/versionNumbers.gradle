@@ -7,8 +7,7 @@ buildscript {
         checkstyleVersion = "8.12"
         grettyVersion = "2.0.0"
             postgresqlVersion = "42.2.5"
-            dbcp2 = "2.5.0"
-            tomcatDbcp = "8.5.33"
+            c3p0Version="0.9.5.2"
         sonarVersion = "2.6.2"
         flywayVersion = "5.1.4"
 

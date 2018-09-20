@@ -1,5 +1,6 @@
 
 buildscript {
+    //noinspection GroovyAssignabilityCheck
     repositories repositorioLocal
     dependencies {
         classpath "org.akhikhl.gretty:gretty:${grettyVersion}"
@@ -11,15 +12,10 @@ apply plugin: org.akhikhl.gretty.GrettyPlugin
 
 
 dependencies {
-    gretty "org.postgresql:postgresql:${postgresqlVersion}"
-    gretty group: 'org.apache.tomcat', name: 'tomcat-dbcp', version: "${tomcatDbcp}"   //necessário para o tomcat embarcado
+    compile "org.postgresql:postgresql:${postgresqlVersion}"
+    compile "com.mchange:c3p0:${c3p0Version}"
 }
 
-
-/** Servidores externos, adicionar as seguintes bibliotecas:
- *  Tomcat:
- *      apache-tomcat-9.0.11/lib/postgresql-${postgresqlVersion}.jar
- */
 
 /**
  * Datasource

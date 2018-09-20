@@ -1,5 +1,6 @@
 
 buildscript {
+    //noinspection GroovyAssignabilityCheck
     repositories repositorioLocal
     dependencies {
         classpath "org.akhikhl.gretty:gretty:${grettyVersion}"
@@ -11,18 +12,16 @@ apply plugin: org.akhikhl.gretty.GrettyPlugin
 
 
 dependencies {
-    gretty "org.postgresql:postgresql:${postgresqlVersion}"
-    gretty "org.apache.commons:commons-dbcp2:${dbcp2}" //necessário para o jetty embarcado
+    compile "org.postgresql:postgresql:${postgresqlVersion}"
+    compile "com.mchange:c3p0:${c3p0Version}"
 }
 
-
-/** Servidores externos, adicionar as seguintes bibliotecas:
- *  Jetty:
- *      jetty-distribution-9.4.12.v20180830/lib/ext/postgresql-42.2.5.jar
- *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-dbcp2-2.5.0.jar
- *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-pool2-2.6.0.jar
- *      jetty-distribution-9.4.12.v20180830/lib/ext/commons-logging-1.2.jar
+/***
+ * Jetty 9 + spring + jdk8 = bug
+ *     https://vaskoz.wordpress.com/2013/12/18/fix-jetty-9-1-for-jdk8-annotations/
+ *
  */
+
 
 /**
  * Datasource
@@ -33,7 +32,7 @@ dependencies {
 
 
 gretty {
-    //servletContainer = 'tomcat8' //comentar essa linha caso queira executar o jetty por linha de comando
+    //servletContainer = 'jetty9' //por default usa jetty9
     contextPath = '/'
     enableNaming = true
 }

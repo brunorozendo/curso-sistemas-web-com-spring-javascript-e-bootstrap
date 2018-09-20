@@ -37,6 +37,7 @@ public class DataSourceController extends UtilController {
       initContext = new InitialContext();
     } catch (NamingException e) {
       logger.debug(e.getExplanation());
+      status = e.getExplanation();
     }
 
     try {
@@ -45,22 +46,30 @@ public class DataSourceController extends UtilController {
       }
     } catch (NamingException e) {
       logger.debug(e.getExplanation());
+      status = e.getExplanation();
     } catch (Exception e) {
-      try {
-        ds = (DataSource) initContext.lookup("jdbc/brewer");
-      } catch (NamingException e2) {
-        logger.debug(e2.getExplanation());
+      logger.debug(e.getMessage());
+      status = e.getMessage();
+    } finally {
+      if (ds == null) {
+        try {
+          ds = (DataSource) initContext.lookup("jdbc/brewer");
+        } catch (NamingException e2) {
+          logger.debug(e2.getExplanation());
+          status = e2.getMessage();
+        }
       }
     }
 
     if (ds != null) {
-      String query = "SELECT version()";
+      final String query = "SELECT version()";
       try (ResultSet rs = ((ds.getConnection()).createStatement()).executeQuery(query)) {
         while (rs.next()) {
           status = rs.getString("version");
         }
       } catch (SQLException e) {
         logger.debug(e.getMessage());
+        status = e.getMessage();
       }
 
     }
