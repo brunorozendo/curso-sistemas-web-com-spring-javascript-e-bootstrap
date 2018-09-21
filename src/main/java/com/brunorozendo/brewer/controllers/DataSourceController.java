@@ -51,7 +51,7 @@ public class DataSourceController extends UtilController {
       logger.debug(e.getMessage());
       status = e.getMessage();
     } finally {
-      if (ds == null) {
+      if (ds == null && initContext != null) {
         try {
           ds = (DataSource) initContext.lookup("jdbc/brewer");
         } catch (NamingException e2) {

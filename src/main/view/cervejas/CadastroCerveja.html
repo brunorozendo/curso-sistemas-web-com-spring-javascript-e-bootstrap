@@ -22,15 +22,17 @@
         <!------------------------->
 
         <div class="row">
+
             <div class="col-sm-2">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="sku" class="control-label">SKU</label>
                     <input id="sku" type="text" class="form-control" th:field="*{sku}"/>
                     <span class="help-block" th:each="error: ${#fields.errors('sku')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
+
             <div class="col-sm-10">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="nome" class="control-label">Nome</label>
                     <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
                     <span class="help-block" th:each="error: ${#fields.errors('nome')}" th:text="${error}">Please correct the error</span>
@@ -81,10 +83,11 @@
                 <div class="form-group">
                     <label for="teorAlcoolico" class="control-label">Teor Alcoólico</label>
                     <div class="input-group">
-                        <input id="teorAlcoolico" type="text"
+                        <input id="teorAlcoolico" th:field="*{teorAlcoolico}" type="text"
                                class="form-control js-decimal"/>
                         <div class="input-group-addon">%</div>
                     </div>
+                    <span class="help-block" th:each="error: ${#fields.errors('teorAlcoolico')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
 
@@ -106,12 +109,13 @@
 
         <div class="row">
             <div class="col-sm-3">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="valor" class="control-label">Valor</label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input id="valor" type="text" class="form-control js-decimal"/>
+                        <input id="valor" th:field="*{valor}" type="text" class="form-control js-decimal"/>
                     </div>
+                    <span class="help-block" th:each="error: ${#fields.errors('valor')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
 
@@ -119,18 +123,18 @@
                 <div class="form-group">
                     <label for="comissao" class="control-label">Comissão</label>
                     <div class="input-group">
-                        <input id="comissao" type="text" class="form-control js-decimal"/>
+                        <input id="comissao" th:field="*{comissao}" type="text" class="form-control js-decimal"/>
                         <div class="input-group-addon">%</div>
                     </div>
-
+                    <span class="help-block" th:each="error: ${#fields.errors('comissao')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
 
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="input-produto-estoque" class="control-label">Estoque</label>
-                    <input id="input-produto-estoque" type="text" t class="form-control js-int"
-                           placeholder="Unidades"/>
+                    <input id="input-produto-estoque" type="text" th:field="*{qtdEstoque}" class="form-control js-int" placeholder="Unidades"/>
+                    <span class="help-block" th:each="error: ${#fields.errors('qtdEstoque')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
         </div>

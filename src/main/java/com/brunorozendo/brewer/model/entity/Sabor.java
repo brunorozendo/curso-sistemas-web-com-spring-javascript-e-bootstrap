@@ -18,5 +18,9 @@ public enum Sabor {
     return descricao;
   }
 
+  @Override
+  public String toString() {
+    return this.descricao;
+  }
 }
 
