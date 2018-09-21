@@ -48,7 +48,7 @@ public class ConfigJpa {
   @Bean
   public JpaVendorAdapter jpaVendorAdapter() {
     EclipseLinkJpaVendorAdapter adapter = new EclipseLinkJpaVendorAdapter();
-    adapter.setDatabase(Database.H2);
+    adapter.setDatabase(Database.POSTGRESQL);
     adapter.setShowSql(false);
     adapter.setGenerateDdl(false);
     return adapter;

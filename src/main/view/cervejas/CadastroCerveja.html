@@ -48,29 +48,33 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="estiloDto" class="control-label">Estilo</label>
+                    <label for="estilo" class="control-label">Estilo</label>
                     <div class="bw-field-action">
-                        <select id="estiloDto" class="form-control">
+                        <select id="estilo" class="form-control" th:field="*{estilo}">
                             <option value="0">Selecione</option>
+                            <option th:each="estilo : ${estilos}" th:value="${estilo.id}" th:text="${estilo.nome}">Op
+                            </option>
                         </select>
                         <div class="bw-field-action__icon">
-                            <a href="javascript:return false;" data-toggle="modal"
-                               data-target="#modalCadastroRapidoEstilo">
+                            <a href="javascript:return false;" data-toggle="modal" data-target="#modalCadastroRapidoEstilo">
                                 <span class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></span>
                             </a>
                         </div>
                     </div>
+                    <span class="help-block" th:each="error: ${#fields.errors('estilo')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
 
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="sabor" class="control-label">Sabor</label>
-                    <select name="sabor" id="sabor" class="form-control">
+                    <select name="sabor" id="sabor" class="form-control" th:field="*{sabor}">
                         <option value="0">Selecione</option>
+                        <option th:each="sabor : ${sabores}" th:value="${sabor}" th:text="${sabor.descricao}">Op
+                        </option>
                     </select>
+                    <span class="help-block" th:each="error: ${#fields.errors('sabor')}" th:text="${error}">Please correct the error</span>
                 </div>
-
             </div>
 
             <div class="col-sm-3">
@@ -88,15 +92,14 @@
                 <div class="form-group">
                     <label class="control-label">Origem</label>
                     <div>
-                        <div class="radio radio-inline">
-                            <input id="id_origem" type="radio">
-                            <label for="id_origem">Nacional</label>
-                        </div>
-                        <div class="radio radio-inline">
-                            <input id="id_origem2" type="radio">
-                            <label for="id_origem2">Internacinal</label>
-                        </div>
+                        <th:block th:each="origem : ${origens}">
+                            <div class="radio radio-inline">
+                                <input th:id="|id_${origem}|" type="radio" th:field="*{origem}" th:value="${origem}">
+                                <label th:for="|id_${origem}|" th:text="${origem.descricao}">Nacional</label>
+                            </div>
+                        </th:block>
                     </div>
+                    <span class="help-block" th:each="error: ${#fields.errors('origem')}" th:text="${error}">Please correct the error</span>
                 </div>
             </div>
         </div>

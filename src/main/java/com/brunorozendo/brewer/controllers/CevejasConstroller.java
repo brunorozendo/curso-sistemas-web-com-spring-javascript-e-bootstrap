@@ -2,7 +2,10 @@ package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.dto.CervejaDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
+import com.brunorozendo.brewer.model.entity.Origem;
+import com.brunorozendo.brewer.model.entity.Sabor;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
+import com.brunorozendo.brewer.model.repositories.EstiloRepository;
 import java.util.HashMap;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -28,6 +31,9 @@ public class CevejasConstroller extends UtilController {
   @Autowired
   CervejaRepository cervejaRepository;
 
+  @Autowired
+  EstiloRepository estiloRepository;
+
 
   /**
    * Carrega a p&aacute;gina de cadastro de cervejaDto.
@@ -40,6 +46,9 @@ public class CevejasConstroller extends UtilController {
   @GetMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(CervejaDto cervejaDto) {
     cervejaRepository.findAll();
+    addModel("origens", Origem.values());
+    addModel("sabores", Sabor.values());
+    addModel("estilos", estiloRepository.findAll());
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 

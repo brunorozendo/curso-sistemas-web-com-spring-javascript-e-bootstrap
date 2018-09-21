@@ -25,7 +25,7 @@ public class DataSourceController extends UtilController {
    *
    * @return String dizendo se o datasrouce está acessivel
    */
-  @GetMapping("/check/datasource")
+  @GetMapping("/")
   public @ResponseBody
   ResponseEntity<String> check() {
 

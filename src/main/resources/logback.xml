@@ -21,14 +21,14 @@
     <logger name="jdbc.resultset" level="error" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="jdbc.resultsettable" level="info" additivity="false">
+    <logger name="jdbc.resultsettable" level="error" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
     <logger name="jdbc.connection" level="error" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <root level="debug">
+    <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

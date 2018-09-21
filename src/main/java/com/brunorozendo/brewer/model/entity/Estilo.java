@@ -19,6 +19,7 @@ public class Estilo implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_estilo")
   private Integer id;
 
   @NotBlank
