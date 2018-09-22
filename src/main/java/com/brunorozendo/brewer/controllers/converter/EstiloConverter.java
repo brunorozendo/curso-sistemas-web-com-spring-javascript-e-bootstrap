@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 public class EstiloConverter implements Converter<String, Estilo> {
   @Override
   public Estilo convert(String source) {
-    if(!source.isEmpty()) {
+    if (!source.isEmpty()) {
       Estilo estilo = new Estilo();
       estilo.setId(Integer.valueOf(source));
       return estilo;

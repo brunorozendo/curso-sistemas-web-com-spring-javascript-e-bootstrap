@@ -13,12 +13,24 @@ import javax.validation.Payload;
 @Constraint(validatedBy = NumberNotEmptyImpl.class)
 public @interface NumberNotEmpty {
 
+  /**
+   * Mensagem de validação para NumberNotEmptty.
+   * key em properttiles <code>com.brunorozendo.brewer.validation.NumberNotEmptty.message</code>.
+   * @return String
+   */
+  String message() default "{com.brunorozendo.brewer.validation.NumberNotEmptty.message}";
 
-    String message() default "{com.brunorozendo.brewer.validation.NumberNotEmptty.message}";
+  /***
+   * TO DO.
+   * @return Class<?>[]
+   */
+  Class<?>[] groups() default {};
 
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
+  /***
+   * TO DO.
+   * @return Class<? extends Payload>[]
+   */
+  Class<? extends Payload>[] payload() default {};
 
 }
 

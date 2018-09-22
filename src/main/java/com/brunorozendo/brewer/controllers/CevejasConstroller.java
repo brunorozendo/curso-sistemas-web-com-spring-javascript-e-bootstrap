@@ -5,7 +5,6 @@ import com.brunorozendo.brewer.controllers.util.UtilController;
 import com.brunorozendo.brewer.model.entity.Estilo;
 import com.brunorozendo.brewer.model.entity.Origem;
 import com.brunorozendo.brewer.model.entity.Sabor;
-import com.brunorozendo.brewer.model.repositories.CervejaRepository;
 import com.brunorozendo.brewer.model.repositories.EstiloRepository;
 import com.brunorozendo.brewer.services.CervejaService;
 import java.util.HashMap;
@@ -52,22 +51,6 @@ public class CevejasConstroller extends UtilController {
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 
-  @ModelAttribute(name = "estilos")
-  private List<Estilo> getEstilos() {
-    return estiloRepository.findAll();
-  }
-
-  @ModelAttribute(name = "sabores")
-  private Sabor[] getSabores() {
-    return Sabor.values();
-  }
-
-  @ModelAttribute(name = "origens")
-  private Origem[] getOrigens() {
-    return Origem.values();
-  }
-
-
   /**
    * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar a cervejaDto.
    *
@@ -102,5 +85,21 @@ public class CevejasConstroller extends UtilController {
     cervejaService.salvar(cervejaDto);
     return redirect(URL_FORM_CADASTRO);
   }
+
+  @ModelAttribute(name = "estilos")
+  private List<Estilo> getEstilos() {
+    return estiloRepository.findAll();
+  }
+
+  @ModelAttribute(name = "sabores")
+  private Sabor[] getSabores() {
+    return Sabor.values();
+  }
+
+  @ModelAttribute(name = "origens")
+  private Origem[] getOrigens() {
+    return Origem.values();
+  }
+
 
 }

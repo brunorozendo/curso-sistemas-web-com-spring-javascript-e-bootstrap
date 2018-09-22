@@ -18,7 +18,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackageClasses = CervejaRepository.class, enableDefaultTransactions = false)
+@EnableJpaRepositories(basePackageClasses = CervejaRepository.class,
+    enableDefaultTransactions = false)
 @EnableTransactionManagement
 public class ConfigJpa {
 
