@@ -11,6 +11,10 @@
     <form method="post" class="form-vertical  js-form-loading" th:object="${cervejaDto}">
 
 
+        <th:block th:replace="~{fragments/alerts :: message}"/>
+        <th:block th:replace="~{fragments/alerts :: errors}"/>
+
+
         <div class="row">
 
             <div class="col-sm-2">

@@ -76,12 +76,14 @@ public class CevejasConstroller extends UtilController {
 
       HashMap<String, Object> data = new HashMap<>();
       data.put("view", VIEW_FORM_CADASTRO);
-      data.put("messagem", "com erro");
+      data.put("message", "com erro");
+      data.put("messageType", "danger");
 
       return new ModelAndView("layout.html", data);
 
     }
-    redirectAttributes.addFlashAttribute("messagem", "sucesso!");
+    redirectAttributes.addFlashAttribute("message", "salvo com sucesso!");
+    redirectAttributes.addFlashAttribute("messageType", "success");
     cervejaService.salvar(cervejaDto);
     return redirect(URL_FORM_CADASTRO);
   }

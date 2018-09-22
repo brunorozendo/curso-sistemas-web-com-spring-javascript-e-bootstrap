@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/clientes")
 public class ClienteController extends UtilController {
 
-  private static final String VIEW_FORM_CADASTRO = "/ccliente/CadastroCliente";
+  private static final String VIEW_FORM_CADASTRO = "/cliente/CadastroCliente";
   private static final String URL_FORM_CADASTRO = "/clientes/novo";
 
   /**
