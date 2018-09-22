@@ -1,11 +1,13 @@
 package org.spring.config;
 
 import com.brunorozendo.brewer.controllers.DataSourceController;
+import com.brunorozendo.brewer.controllers.converter.EstiloConverter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -49,6 +51,7 @@ public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationCon
 
   /**
    * Bean responsável por passar o thymeleaf como view.
+   *
    * @return ViewResolver
    */
   @Bean
@@ -67,6 +70,18 @@ public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationCon
         .addResourceLocations("/assets/");
   }
 
+  /**
+   * Adiciona os converters que o spring conhece.
+   *
+   * @return FormattingConversionService
+   * @see  EstiloConverter
+   */
+  @Bean
+  public FormattingConversionService mvcConversionService() {
+    FormattingConversionService service = new FormattingConversionService();
+    service.addConverter(new EstiloConverter());
+    return service;
+  }
 
 
 }
