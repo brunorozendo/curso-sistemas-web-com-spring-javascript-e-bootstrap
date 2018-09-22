@@ -2,11 +2,13 @@ package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.dto.CervejaDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
+import com.brunorozendo.brewer.model.entity.Estilo;
 import com.brunorozendo.brewer.model.entity.Origem;
 import com.brunorozendo.brewer.model.entity.Sabor;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
 import com.brunorozendo.brewer.model.repositories.EstiloRepository;
 import java.util.HashMap;
+import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -46,10 +49,23 @@ public class CevejasConstroller extends UtilController {
   @GetMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(CervejaDto cervejaDto) {
     cervejaRepository.findAll();
-    addModel("origens", Origem.values());
-    addModel("sabores", Sabor.values());
-    addModel("estilos", estiloRepository.findAll());
+
     return modelAndView(VIEW_FORM_CADASTRO);
+  }
+
+  @ModelAttribute(name = "estilos")
+  private List<Estilo> getEstilos() {
+    return estiloRepository.findAll();
+  }
+
+  @ModelAttribute(name = "sabores")
+  private Sabor[] getSabores() {
+    return Sabor.values();
+  }
+
+  @ModelAttribute(name = "origens")
+  private Origem[] getOrigens() {
+    return Origem.values();
   }
 
 

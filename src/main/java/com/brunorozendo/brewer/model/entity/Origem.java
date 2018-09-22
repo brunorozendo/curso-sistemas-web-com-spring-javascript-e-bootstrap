@@ -15,8 +15,5 @@ public enum Origem {
     return descricao;
   }
 
-  @Override
-  public String toString() {
-    return this.descricao;
-  }
+
 }

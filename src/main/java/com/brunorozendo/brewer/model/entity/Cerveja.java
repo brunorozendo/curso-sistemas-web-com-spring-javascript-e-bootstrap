@@ -1,5 +1,6 @@
 package com.brunorozendo.brewer.model.entity;
 
+import com.brunorozendo.brewer.model.validation.NumberNotEmpty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
@@ -12,7 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -38,26 +44,39 @@ public class Cerveja implements Serializable {
   @Column(name = "tx_descricao")
   private String descricao;
 
+  /*@NumberNotEmpty
+  @DecimalMin(value = "0.01")
+  @DecimalMax(value = "9999999.99")*/
   @Column(name = "nr_valor")
   private BigDecimal valor;
 
+  /*@NumberNotEmpty
+  @DecimalMax(value = "100.0")*/
   @Column(name = "nr_teor_alcoolico")
   private Float teorAlcoolico;
 
+  /*@NumberNotEmpty
+  @DecimalMax(value = "100.0")*/
   @Column(name = "nr_comissao")
   private Float comissao;
 
+  /*@NumberNotEmpty
+  @DecimalMin(value = "0.01")
+  @DecimalMax(value = "9999999.99")*/
   @Column(name = "nr_quantidade_estoque")
   private Float qtdEstoque;
 
+  @NotNull
   @Enumerated(EnumType.STRING)
   @Column(name = "tx_origem")
   private Origem origem;
 
+  @NotNull
   @Enumerated(EnumType.STRING)
   @Column(name = "tx_sabor")
   private Sabor sabor;
 
+  @NotNull
   @JoinColumn(name = "id_estilo")
   @ManyToOne
   private Estilo estilo;

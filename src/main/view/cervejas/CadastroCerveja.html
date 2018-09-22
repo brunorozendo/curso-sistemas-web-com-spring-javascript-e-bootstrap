@@ -10,16 +10,6 @@
 
     <form method="post" class="form-vertical  js-form-loading" th:object="${cervejaDto}">
 
-        <div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            <p th:each="error : ${#fields.detailedErrors('${cervejaDto.*}')}">
-                <i class="fa  fa-exclamation-circle"></i> <span th:text="${error}"></span>
-            </p>
-        </div>
-
-
-        <!------------------------->
 
         <div class="row">
 
@@ -53,7 +43,7 @@
                     <label for="estilo" class="control-label">Estilo</label>
                     <div class="bw-field-action">
                         <select id="estilo" class="form-control" th:field="*{estilo}">
-                            <option value="0">Selecione</option>
+                            <option value="">Selecione</option>
                             <option th:each="estilo : ${estilos}" th:value="${estilo.id}" th:text="${estilo.nome}">Op
                             </option>
                         </select>
@@ -71,7 +61,7 @@
                 <div class="form-group">
                     <label for="sabor" class="control-label">Sabor</label>
                     <select name="sabor" id="sabor" class="form-control" th:field="*{sabor}">
-                        <option value="0">Selecione</option>
+                        <option value="">Selecione</option>
                         <option th:each="sabor : ${sabores}" th:value="${sabor}" th:text="${sabor.descricao}">Op
                         </option>
                     </select>

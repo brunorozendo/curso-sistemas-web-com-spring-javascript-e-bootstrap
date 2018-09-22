@@ -2,6 +2,7 @@ package org.spring.config;
 
 import com.brunorozendo.brewer.controllers.DataSourceController;
 import com.brunorozendo.brewer.controllers.converter.EstiloConverter;
+import com.brunorozendo.brewer.controllers.converter.SaborConverter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -75,11 +76,13 @@ public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationCon
    *
    * @return FormattingConversionService
    * @see  EstiloConverter
+   * @see  SaborConverter
    */
   @Bean
   public FormattingConversionService mvcConversionService() {
     FormattingConversionService service = new FormattingConversionService();
     service.addConverter(new EstiloConverter());
+    service.addConverter(new SaborConverter());
     return service;
   }
 

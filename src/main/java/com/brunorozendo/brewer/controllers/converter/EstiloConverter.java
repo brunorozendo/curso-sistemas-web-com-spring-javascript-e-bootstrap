@@ -3,11 +3,14 @@ package com.brunorozendo.brewer.controllers.converter;
 import com.brunorozendo.brewer.model.entity.Estilo;
 import org.springframework.core.convert.converter.Converter;
 
-public class EstiloConverter implements Converter<Integer, Estilo> {
+public class EstiloConverter implements Converter<String, Estilo> {
   @Override
-  public Estilo convert(Integer source) {
-    Estilo estilo = new Estilo();
-    estilo.setId(source);
-    return estilo;
+  public Estilo convert(String source) {
+    if(!source.isEmpty()) {
+      Estilo estilo = new Estilo();
+      estilo.setId(Integer.valueOf(source));
+      return estilo;
+    }
+    return null;
   }
 }
