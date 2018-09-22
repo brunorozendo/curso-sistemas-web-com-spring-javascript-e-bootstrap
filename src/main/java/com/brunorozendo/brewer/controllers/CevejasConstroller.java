@@ -7,6 +7,7 @@ import com.brunorozendo.brewer.model.entity.Origem;
 import com.brunorozendo.brewer.model.entity.Sabor;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
 import com.brunorozendo.brewer.model.repositories.EstiloRepository;
+import com.brunorozendo.brewer.services.CervejaService;
 import java.util.HashMap;
 import java.util.List;
 import javax.validation.Valid;
@@ -32,7 +33,7 @@ public class CevejasConstroller extends UtilController {
   private static final String URL_FORM_CADASTRO = "/cervejas/novo";
 
   @Autowired
-  CervejaRepository cervejaRepository;
+  CervejaService cervejaService;
 
   @Autowired
   EstiloRepository estiloRepository;
@@ -48,8 +49,6 @@ public class CevejasConstroller extends UtilController {
    */
   @GetMapping(URL_FORM_CADASTRO)
   public ModelAndView novo(CervejaDto cervejaDto) {
-    cervejaRepository.findAll();
-
     return modelAndView(VIEW_FORM_CADASTRO);
   }
 
@@ -100,7 +99,7 @@ public class CevejasConstroller extends UtilController {
 
     }
     redirectAttributes.addFlashAttribute("messagem", "sucesso!");
-    logger.info(cervejaDto.getSku());
+    cervejaService.salvar(cervejaDto);
     return redirect(URL_FORM_CADASTRO);
   }
 
