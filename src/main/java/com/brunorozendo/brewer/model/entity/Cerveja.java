@@ -1,6 +1,7 @@
 package com.brunorozendo.brewer.model.entity;
 
 import com.brunorozendo.brewer.model.validation.NumberNotEmpty;
+import com.brunorozendo.brewer.model.validation.Sku;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
@@ -30,6 +31,7 @@ public class Cerveja implements Serializable {
   @Column(name = "id_cerveja")
   private Integer id;
 
+  @Sku
   @NotBlank
   @Column(name = "tx_sku")
   private String sku;
