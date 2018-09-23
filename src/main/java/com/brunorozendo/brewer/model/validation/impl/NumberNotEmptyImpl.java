@@ -18,7 +18,7 @@ public class NumberNotEmptyImpl implements ConstraintValidator<NumberNotEmpty, N
       DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("pt", "BR"));
       symbols.setGroupingSeparator('.');
       symbols.setDecimalSeparator(',');
-      String pattern = "#,##0.0#";
+      String pattern = "#,##0.00";
       DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
       decimalFormat.setParseBigDecimal(true);
 

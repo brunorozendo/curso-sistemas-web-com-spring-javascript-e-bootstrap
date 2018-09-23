@@ -3,16 +3,21 @@ package org.spring.config;
 import com.brunorozendo.brewer.controllers.DataSourceController;
 import com.brunorozendo.brewer.controllers.converter.EstiloConverter;
 import com.brunorozendo.brewer.controllers.converter.SaborConverter;
+import java.math.BigDecimal;
+import java.util.Locale;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.number.NumberStyleFormatter;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -83,7 +88,27 @@ public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationCon
     FormattingConversionService service = new FormattingConversionService();
     service.addConverter(new EstiloConverter());
     service.addConverter(new SaborConverter());
+
+
+    NumberStyleFormatter bigDecilaFormatter = new NumberStyleFormatter("#,##0.00");
+    service.addFormatterForFieldType(BigDecimal.class, bigDecilaFormatter);
+
+    NumberStyleFormatter integerFormatter = new NumberStyleFormatter("#,##0");
+    service.addFormatterForFieldType(Integer.class, integerFormatter);
+
+    service.addFormatterForFieldType(Number.class, bigDecilaFormatter);
+
     return service;
+  }
+
+
+  /**
+   * Define que a linguagem ser&aacute; pt-BR.
+   * @return LocaleResolver
+   */
+  @Bean
+  public LocaleResolver localeResolver() {
+    return  new FixedLocaleResolver(new Locale("pt", "BR"));
   }
 
 

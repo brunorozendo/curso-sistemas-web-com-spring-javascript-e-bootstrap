@@ -46,27 +46,29 @@ public class Cerveja implements Serializable {
   @Column(name = "tx_descricao")
   private String descricao;
 
-  /*@NumberNotEmpty
+  @NumberNotEmpty
   @DecimalMin(value = "0.01")
-  @DecimalMax(value = "9999999.99")*/
+  @DecimalMax(value = "9999999.99")
   @Column(name = "nr_valor")
   private BigDecimal valor;
 
-  /*@NumberNotEmpty
-  @DecimalMax(value = "100.0")*/
-  @Column(name = "nr_teor_alcoolico")
-  private Float teorAlcoolico;
-
-  /*@NumberNotEmpty
-  @DecimalMax(value = "100.0")*/
-  @Column(name = "nr_comissao")
-  private Float comissao;
-
-  /*@NumberNotEmpty
+  @NumberNotEmpty
   @DecimalMin(value = "0.01")
-  @DecimalMax(value = "9999999.99")*/
+  @DecimalMax(value = "100.0")
+  @Column(name = "nr_teor_alcoolico")
+  private BigDecimal teorAlcoolico;
+
+  @NumberNotEmpty
+  @DecimalMax(value = "100.0")
+  @DecimalMin(value = "0.01")
+  @Column(name = "nr_comissao")
+  private BigDecimal comissao;
+
+  @NumberNotEmpty
+  @DecimalMin(value = "0.01")
+  @DecimalMax(value = "9999999.99")
   @Column(name = "nr_quantidade_estoque")
-  private Float qtdEstoque;
+  private BigDecimal qtdEstoque;
 
   @NotNull
   @Enumerated(EnumType.STRING)
@@ -124,27 +126,27 @@ public class Cerveja implements Serializable {
     this.valor = valor;
   }
 
-  public Float getTeorAlcoolico() {
+  public BigDecimal getTeorAlcoolico() {
     return teorAlcoolico;
   }
 
-  public void setTeorAlcoolico(Float teorAlcoolico) {
+  public void setTeorAlcoolico(BigDecimal teorAlcoolico) {
     this.teorAlcoolico = teorAlcoolico;
   }
 
-  public Float getComissao() {
+  public BigDecimal getComissao() {
     return comissao;
   }
 
-  public void setComissao(Float comissao) {
+  public void setComissao(BigDecimal comissao) {
     this.comissao = comissao;
   }
 
-  public Float getQtdEstoque() {
+  public BigDecimal getQtdEstoque() {
     return qtdEstoque;
   }
 
-  public void setQtdEstoque(Float qtdEstoque) {
+  public void setQtdEstoque(BigDecimal qtdEstoque) {
     this.qtdEstoque = qtdEstoque;
   }
 
