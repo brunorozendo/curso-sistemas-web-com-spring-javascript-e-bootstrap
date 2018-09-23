@@ -3,6 +3,7 @@ package com.brunorozendo.brewer.controllers;
 import com.brunorozendo.brewer.controllers.dto.EstiloDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
 import com.brunorozendo.brewer.services.EstiloService;
+import com.brunorozendo.brewer.services.exception.DuplicateNameField;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class EstiloController extends UtilController {
 
   @Autowired
   EstiloService estiloService;
+
   /**
    * Carrega a p&aacute;gina de cadastro de estiloDto.
    *
@@ -40,7 +42,7 @@ public class EstiloController extends UtilController {
    * Recebe  a requisi&ccedil;&atilde;o para salvar/atualizar o cliente.
    * Vindo da tala.
    *
-   * @param estiloDto             objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
+   * @param estiloDto          objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
    * @param result             objeto que cont&eacute;m as informa&ccedil;&otilde;es da
    *                           valida&ccedil;&atilde;o do parametro estiloDto.
    * @param redirectAttributes objeto necess&aacute;rio trafegar as mensagem enjtre as telas.
@@ -55,7 +57,13 @@ public class EstiloController extends UtilController {
     if (result.hasErrors()) {
       return index(estiloDto);
     }
-    estiloService.salvar(estiloDto);
+    try {
+      estiloService.salvar(estiloDto);
+    } catch (DuplicateNameField e) {
+      result.rejectValue("nome", e.getMessage(), e.getMessage());
+      return index(estiloDto);
+    }
+
     redirectAttributes.addFlashAttribute("message", "Salvo com sucesso");
     redirectAttributes.addFlashAttribute("messageType", MESSAGE_TYPE_SUCESS);
     return redirect("/estilos/novo");
@@ -66,8 +74,8 @@ public class EstiloController extends UtilController {
    * Vindo de uma requisição ajax.
    *
    * @param estiloDto objeto que est&aacute; tela que ser&aacute; cadastrado/atualizado.
-   * @param result objeto que cont&eacute;m as informa&ccedil;&otilde;es da
-   *               valida&ccedil;&atilde;o do parametro estiloDto.
+   * @param result    objeto que cont&eacute;m as informa&ccedil;&otilde;es da
+   *                  valida&ccedil;&atilde;o do parametro estiloDto.
    * @return {@code String} url da pa&#x1f5;ina atual
    * @see EstiloDto
    * @see BindingResult
