@@ -2,7 +2,9 @@ package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.dto.EstiloDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
+import com.brunorozendo.brewer.services.EstiloService;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/estilos")
 public class EstiloController extends UtilController {
 
+
+  @Autowired
+  EstiloService estiloService;
   /**
    * Carrega a p&aacute;gina de cadastro de estiloDto.
    *
@@ -50,6 +55,7 @@ public class EstiloController extends UtilController {
     if (result.hasErrors()) {
       return index(estiloDto);
     }
+    estiloService.salvar(estiloDto);
     redirectAttributes.addFlashAttribute("message", "Salvo com sucesso");
     redirectAttributes.addFlashAttribute("messageType", MESSAGE_TYPE_SUCESS);
     return redirect("/estilos/novo");
