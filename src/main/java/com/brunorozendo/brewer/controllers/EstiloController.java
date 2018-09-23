@@ -6,12 +6,14 @@ import com.brunorozendo.brewer.services.EstiloService;
 import com.brunorozendo.brewer.services.exception.DuplicateNameField;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -81,13 +83,20 @@ public class EstiloController extends UtilController {
    * @see BindingResult
    * @since 5.14
    */
-  @PostMapping
+  @RequestMapping(method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
   public @ResponseBody
-  ResponseEntity<Object> salvar(@RequestBody @Valid EstiloDto estiloDto, BindingResult result) {
+  ResponseEntity<Object> salvar(@RequestBody @Valid EstiloDto estiloDto,
+                                BindingResult result) {
     if (result.hasErrors()) {
       return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
     }
-    return ResponseEntity.ok(estiloDto);
+
+    try {
+      return ResponseEntity.ok(estiloService.salvar(estiloDto));
+    } catch (DuplicateNameField e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
   }
 
 }

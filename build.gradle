@@ -106,4 +106,10 @@ dependencies {
     compile "org.springframework.data:spring-data-jpa:${springDataVersion}"
 
 
+    /**
+     * Obrigatório para o spring
+     * Jackson-Databind : parse do json para um objeto
+     */
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
 }

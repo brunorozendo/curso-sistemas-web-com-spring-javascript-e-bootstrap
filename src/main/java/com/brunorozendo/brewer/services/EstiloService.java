@@ -16,13 +16,13 @@ public class EstiloService {
   EstiloRepository estiloRepository;
 
   @Transactional
-  public void salvar(EstiloDto estilo) {
+  public Estilo salvar(EstiloDto estilo) {
 
     Optional<Estilo> byNomeIgnoreCase = estiloRepository.findByNomeIgnoreCase(estilo.getNome());
     if (byNomeIgnoreCase.isPresent()) {
       throw new DuplicateNameField("nome");
     }
-    estiloRepository.save(estiloDtoToEntity(estilo));
+    return  estiloRepository.saveAndFlush(estiloDtoToEntity(estilo));
   }
 
 

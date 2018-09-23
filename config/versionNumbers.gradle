@@ -12,7 +12,7 @@ buildscript {
         sonarVersion = "2.6.2"
         flywayVersion = "5.1.4"
 
-        //dependêncieas
+        //dependências
         springVersion = "4.3.18.RELEASE"
         thymeleafVersion = "3.0.9.RELEASE"
         logback = "0.9.26"
@@ -20,6 +20,7 @@ buildscript {
         hibernatewValidatorVersion = "6.0.12.Final"
         eclipseLinkVersion = "2.7.3"
         springDataVersion = "2.0.10.RELEASE"
+        jacksonVersion = "2.9.2"
 
     }
 }

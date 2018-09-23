@@ -1,4 +1,4 @@
-let Brewer = Brewer || {};
+var Brewer = Brewer || {};
 
 Brewer.EstiloCadastroRapido = (function() {
 	
@@ -29,7 +29,7 @@ Brewer.EstiloCadastroRapido = (function() {
 	}
 	
 	function onBotaoSalvarClick() {
-		let nomeEstilo = this.inputNomeEstilo.val().trim();
+		var nomeEstilo = this.inputNomeEstilo.val().trim();
 		$.ajax({
 			url: this.url,
 			method: 'POST',
@@ -41,16 +41,16 @@ Brewer.EstiloCadastroRapido = (function() {
 	}
 	
 	function onErroSalvandoEstilo(obj) {
-		let mensagemErro = obj.responseText;
+		var mensagemErro = obj.responseText;
 		this.containerMensagemErro.removeClass('hidden');
 		this.containerMensagemErro.html('<span>' + mensagemErro + '</span>');
 		this.form.find('.form-group').addClass('has-error');
 	}
 	
 	function onEstiloSalvo(estilo) {
-		let comboEstilo = $('#estilo');
-		comboEstilo.append('<option value=' + estilo.codigo + '>' + estilo.nome + '</option>');
-		comboEstilo.val(estilo.codigo);
+		var comboEstilo = $('#estilo');
+		comboEstilo.append('<option value=' + estilo.id + '>' + estilo.nome + '</option>');
+		comboEstilo.val(estilo.id);
 		this.modal.modal('hide');
 	}
 	
@@ -59,6 +59,6 @@ Brewer.EstiloCadastroRapido = (function() {
 }());
 
 $(function() {
-	let estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
+	var estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
 	estiloCadastroRapido.iniciar();
 });
