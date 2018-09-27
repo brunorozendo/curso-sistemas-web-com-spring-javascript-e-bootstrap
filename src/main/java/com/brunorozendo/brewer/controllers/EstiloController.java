@@ -89,13 +89,7 @@ public class EstiloController extends UtilController {
     if (result.hasErrors()) {
       return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
     }
-
-    try {
-      return ResponseEntity.ok(estiloService.salvar(estiloDto));
-    } catch (DuplicateNameField e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
+    return ResponseEntity.ok(estiloService.salvar(estiloDto));
   }
 
 }
