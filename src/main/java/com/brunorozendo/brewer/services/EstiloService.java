@@ -15,6 +15,11 @@ public class EstiloService {
   @Autowired
   EstiloRepository estiloRepository;
 
+  /**
+   * Resposavél por: validara gravar dos dados.
+   * @param estilo instância de um @see EstiloDto
+   * @return Estilo
+   */
   @Transactional
   public Estilo salvar(EstiloDto estilo) {
 

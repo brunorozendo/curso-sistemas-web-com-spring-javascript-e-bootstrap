@@ -112,4 +112,7 @@ dependencies {
      */
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
+
+    compile 'com.oracle.jdbc:ojdbc8:12.2.0.1'
+
 }

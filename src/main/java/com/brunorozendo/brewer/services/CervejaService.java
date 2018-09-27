@@ -23,7 +23,7 @@ public class CervejaService {
   private Cerveja  cervejaDtoToEntity(CervejaDto dto) {
     Cerveja cerveja = new Cerveja();
     cerveja.setId(dto.getId());
-    cerveja.setSku(dto.getSku());
+    cerveja.setSku(dto.getSku().toUpperCase());
     cerveja.setNome(dto.getNome());
     cerveja.setDescricao(dto.getDescricao());
     cerveja.setValor(dto.getValor());

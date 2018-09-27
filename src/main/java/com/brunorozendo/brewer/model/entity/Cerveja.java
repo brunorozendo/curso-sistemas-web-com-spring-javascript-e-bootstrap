@@ -2,6 +2,7 @@ package com.brunorozendo.brewer.model.entity;
 
 import com.brunorozendo.brewer.model.validation.NumberNotEmpty;
 import com.brunorozendo.brewer.model.validation.Sku;
+import com.brunorozendo.brewer.services.exception.FieldValueExcepetion;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
@@ -13,11 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -172,5 +173,16 @@ public class Cerveja implements Serializable {
 
   public void setEstilo(Estilo estilo) {
     this.estilo = estilo;
+  }
+
+  /**
+   * Valida&ccedil;&otilde;es antes de gravar no banco.
+   */
+  @PrePersist
+  @PreUpdate
+  public void prePersistUpdate() {
+    if (this.sku.matches("\\w")) {
+      throw new FieldValueExcepetion("sku");
+    }
   }
 }

@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -83,7 +82,7 @@ public class EstiloController extends UtilController {
    * @see BindingResult
    * @since 5.14
    */
-  @RequestMapping(method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+  @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
   public @ResponseBody
   ResponseEntity<Object> salvar(@RequestBody @Valid EstiloDto estiloDto,
                                 BindingResult result) {
