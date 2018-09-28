@@ -5,14 +5,13 @@ import com.brunorozendo.brewer.controllers.util.UtilController;
 import com.brunorozendo.brewer.model.entity.Estilo;
 import com.brunorozendo.brewer.model.entity.Origem;
 import com.brunorozendo.brewer.model.entity.Sabor;
-import com.brunorozendo.brewer.model.repositories.EstiloRepository;
-import com.brunorozendo.brewer.services.CervejaService;
+import com.brunorozendo.brewer.model.services.CervejaService;
+import com.brunorozendo.brewer.model.services.EstiloService;
 import java.util.HashMap;
 import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,12 +30,13 @@ public class CevejasConstroller extends UtilController {
   private static final String VIEW_FORM_CADASTRO = "cervejas/CadastroCerveja";
   private static final String URL_FORM_CADASTRO = "/cervejas/novo";
 
-  @Autowired
-  CervejaService cervejaService;
+  private CervejaService cervejaService;
+  private EstiloService estiloService;
 
-  @Autowired
-  EstiloRepository estiloRepository;
-
+  public CevejasConstroller(CervejaService cervejaService, EstiloService estiloService) {
+    this.cervejaService = cervejaService;
+    this.estiloService = estiloService;
+  }
 
   /**
    * Carrega a p&aacute;gina de cadastro de cervejaDto.
@@ -90,7 +90,7 @@ public class CevejasConstroller extends UtilController {
 
   @ModelAttribute(name = "estilos")
   private List<Estilo> getEstilos() {
-    return estiloRepository.findAll();
+    return estiloService.findAll();
   }
 
   @ModelAttribute(name = "sabores")

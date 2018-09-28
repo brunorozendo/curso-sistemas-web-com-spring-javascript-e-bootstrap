@@ -1,4 +1,4 @@
-package com.brunorozendo.brewer.services.exception;
+package com.brunorozendo.brewer.model.services.exception;
 
 public class FieldValueExcepetion extends RuntimeException {
 

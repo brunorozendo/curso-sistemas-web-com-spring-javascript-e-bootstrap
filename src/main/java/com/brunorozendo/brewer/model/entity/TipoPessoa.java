@@ -1,6 +1,6 @@
 package com.brunorozendo.brewer.model.entity;
 
-
+@SuppressWarnings("unused")
 public enum TipoPessoa {
 
   FISICA("Física", "CPF", "000.000.000-00", TipoPessoa.class) {
@@ -21,9 +21,9 @@ public enum TipoPessoa {
   private String descricao;
   private String documento;
   private String mascara;
-  private Class<?> grupo;
+  private Class<TipoPessoa> grupo;
 
-  TipoPessoa(String descricao, String documento, String mascara, Class<?> grupo) {
+  TipoPessoa(String descricao, String documento, String mascara, Class<TipoPessoa> grupo) {
     this.descricao = descricao;
     this.documento = documento;
     this.mascara = mascara;

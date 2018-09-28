@@ -1,17 +1,19 @@
-package com.brunorozendo.brewer.services;
+package com.brunorozendo.brewer.model.services;
 
 import com.brunorozendo.brewer.controllers.dto.CervejaDto;
 import com.brunorozendo.brewer.model.entity.Cerveja;
 import com.brunorozendo.brewer.model.repositories.CervejaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CervejaService {
 
-  @Autowired
-  CervejaRepository cervejaRepository;
+  private CervejaRepository cervejaRepository;
+
+  public CervejaService(CervejaRepository cervejaRepository) {
+    this.cervejaRepository = cervejaRepository;
+  }
 
   @Transactional
   public void salvar(CervejaDto cerveja) {
@@ -19,8 +21,7 @@ public class CervejaService {
   }
 
 
-
-  private Cerveja  cervejaDtoToEntity(CervejaDto dto) {
+  private Cerveja cervejaDtoToEntity(CervejaDto dto) {
     Cerveja cerveja = new Cerveja();
     cerveja.setId(dto.getId());
     cerveja.setSku(dto.getSku().toUpperCase());

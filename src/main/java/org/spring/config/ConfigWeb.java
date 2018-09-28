@@ -3,6 +3,7 @@ package org.spring.config;
 import com.brunorozendo.brewer.controllers.DataSourceController;
 import com.brunorozendo.brewer.controllers.converter.EstiloConverter;
 import com.brunorozendo.brewer.controllers.converter.SaborConverter;
+import com.brunorozendo.brewer.view.thymeleaf.BrewerDialect;
 import java.math.BigDecimal;
 import java.util.Locale;
 import org.springframework.context.ApplicationContext;
@@ -51,6 +52,7 @@ public class ConfigWeb extends WebMvcConfigurerAdapter implements ApplicationCon
     SpringTemplateEngine engine = new SpringTemplateEngine();
     engine.setEnableSpringELCompiler(true);
     engine.setTemplateResolver(templateResolver());
+    engine.addDialect(new BrewerDialect());
     return engine;
   }
 

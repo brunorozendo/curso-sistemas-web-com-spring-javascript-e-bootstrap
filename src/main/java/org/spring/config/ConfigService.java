@@ -1,6 +1,6 @@
 package org.spring.config;
 
-import com.brunorozendo.brewer.services.CervejaService;
+import com.brunorozendo.brewer.model.services.CervejaService;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 

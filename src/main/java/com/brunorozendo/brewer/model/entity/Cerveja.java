@@ -1,8 +1,8 @@
 package com.brunorozendo.brewer.model.entity;
 
+import com.brunorozendo.brewer.model.services.exception.FieldValueExcepetion;
 import com.brunorozendo.brewer.model.validation.NumberNotEmpty;
 import com.brunorozendo.brewer.model.validation.Sku;
-import com.brunorozendo.brewer.services.exception.FieldValueExcepetion;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;

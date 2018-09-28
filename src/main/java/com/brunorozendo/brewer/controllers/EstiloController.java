@@ -2,14 +2,15 @@ package com.brunorozendo.brewer.controllers;
 
 import com.brunorozendo.brewer.controllers.dto.EstiloDto;
 import com.brunorozendo.brewer.controllers.util.UtilController;
-import com.brunorozendo.brewer.services.EstiloService;
-import com.brunorozendo.brewer.services.exception.DuplicateNameField;
+import com.brunorozendo.brewer.model.services.EstiloService;
+import com.brunorozendo.brewer.model.services.exception.DuplicateNameField;
+import java.util.Objects;
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/estilos")
 public class EstiloController extends UtilController {
 
+  private EstiloService estiloService;
 
-  @Autowired
-  EstiloService estiloService;
+  public EstiloController(EstiloService estiloService) {
+    this.estiloService = estiloService;
+  }
 
   /**
    * Carrega a p&aacute;gina de cadastro de estiloDto.
@@ -87,7 +90,9 @@ public class EstiloController extends UtilController {
   ResponseEntity<Object> salvar(@RequestBody @Valid EstiloDto estiloDto,
                                 BindingResult result) {
     if (result.hasErrors()) {
-      return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
+      FieldError fieldErro = result.getFieldError("nome");
+      String message = Objects.requireNonNull(fieldErro).getDefaultMessage();
+      return ResponseEntity.badRequest().body(message);
     }
     return ResponseEntity.ok(estiloService.salvar(estiloDto));
   }
