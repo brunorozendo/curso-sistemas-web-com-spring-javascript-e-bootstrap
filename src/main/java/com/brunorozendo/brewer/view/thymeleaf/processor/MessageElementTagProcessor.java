@@ -16,6 +16,7 @@ public class MessageElementTagProcessor extends AbstractElementTagProcessor {
 
   /**
    * Create processador no html.
+   * @param dialectPrefix "brewer"
    */
   public MessageElementTagProcessor(String dialectPrefix) {
     super(

@@ -13,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 @Pattern(regexp = "([a-zA-Z]{2}\\d{4})?")
+@SuppressWarnings("unused")
 public @interface Sku {
 
   /**
@@ -23,18 +24,17 @@ public @interface Sku {
   @OverridesAttribute(constraint = Pattern.class, name = "message")
   String message() default "Shuld be fallow the pattern XX9999";
 
-  /**
-   *  TO DO.
-   *
-   * @return Class<?>[]
+  /***
+   * &#x54;ODO.
+   * @return Class &lt;?&gt;[]
    */
   Class<?>[] groups() default {};
 
-  /**
-   *  TO DO.
-   *
-   * @return  Class<? extends Payload>[]
+  /***
+   * &#x54;ODO.
+   * @return Class &lt;? extends Payload&gt;[]
    */
   Class<? extends Payload>[] payload() default {};
+
 
 }

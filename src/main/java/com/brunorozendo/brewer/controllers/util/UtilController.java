@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.servlet.ModelAndView;
 
+@SuppressWarnings("unused")
 public class UtilController {
 
   private static final String LAYOUT = "layout";

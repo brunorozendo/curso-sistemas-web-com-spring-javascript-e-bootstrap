@@ -11,24 +11,25 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = NumberNotEmptyImpl.class)
+@SuppressWarnings("unused")
 public @interface NumberNotEmpty {
 
   /**
-   * Mensagem de validação para NumberNotEmptty.
-   * key em properttiles <code>com.brunorozendo.brewer.validation.NumberNotEmptty.message</code>.
+   * Mensagem de valida&ccedil;&atilde;o para NumberNotEmpty.
+   * key em properttiles <code>com.brunorozendo.brewer.validation.NumberNotEmpty.message</code>.
    * @return String
    */
-  String message() default "{com.brunorozendo.brewer.validation.NumberNotEmptty.message}";
+  String message() default "{com.brunorozendo.brewer.validation.NumberNotEmpty.message}";
 
   /***
-   * TO DO.
-   * @return Class<?>[]
+   * &#x54;ODO.
+   * @return Class &lt;?&gt;[]
    */
   Class<?>[] groups() default {};
 
   /***
-   * TO DO.
-   * @return Class<? extends Payload>[]
+   * &#x54;ODO.
+   * @return Class &lt;? extends Payload&gt;[]
    */
   Class<? extends Payload>[] payload() default {};
 

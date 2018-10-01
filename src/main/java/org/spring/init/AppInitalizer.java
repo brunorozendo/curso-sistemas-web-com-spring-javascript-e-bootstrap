@@ -8,6 +8,7 @@ import org.spring.config.ConfigWeb;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+@SuppressWarnings("unused")
 public class AppInitalizer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override

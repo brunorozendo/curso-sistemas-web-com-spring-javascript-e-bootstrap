@@ -19,9 +19,9 @@ public class EstiloService {
   }
 
   /**
-   * Resposável por: validara gravar dos dados.
+   * Respos&aacute;vel por: validara gravar dos dados.
    *
-   * @param estilo instância de um @see EstiloDto
+   * @param estilo inst&acirc;ncia de um @see EstiloDto
    * @return Estilo
    */
   @Transactional

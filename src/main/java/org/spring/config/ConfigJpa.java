@@ -24,7 +24,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class ConfigJpa {
 
   /**
-   * cria um datasrouce baseado no jndi "jdbc/brewer".
+   * cria um datasource baseado no jndi "jdbc/brewer".
+   * @return ComboPooledDataSource from c3p0
    */
   @Bean
   public ComboPooledDataSource dataSource() {
@@ -33,10 +34,14 @@ public class ConfigJpa {
     return (ComboPooledDataSource) dataSourceLookup.getDataSource("jdbc/brewer");
   }
 
+
   /**
    * A
-   * necessário para o spring data jpa nãoo gerar o erro
+   * necess&aacute;rio para o spring data jpa n&atilde;oo gerar o erro
    * <code>No bean named 'transactionManager' is defined</code>.
+   * @param entityManagerFactory
+   *        vindo do m&eacute;&#x74;odo {@link ConfigJpa#entityManagerFactory entityManagerFactory }
+   * @return PlatformTransactionManager
    */
   @Bean
   public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
@@ -46,7 +51,9 @@ public class ConfigJpa {
   }
 
   /**
-   * methodo que especifica qual o vendero (eclipselink, hibernate...) será usando.
+   * m&eacute;&#x74;odo que especifica qual o vendor (eclipselink, hibernate...) ser&aacute; usando.
+   * @return JpaVendorAdapter
+   * @see  Database POSTGRESQL
    */
   @Bean
   public JpaVendorAdapter jpaVendorAdapter() {
@@ -58,7 +65,10 @@ public class ConfigJpa {
   }
 
   /**
-   * Cria EntityManagerFactory, o qual será usado para recuarper um EntityManager.
+   * Cria EntityManagerFactory, o qual ser&aacute; usado para recuperar um EntityManager.
+   * @param dataSource {@link ConfigJpa#dataSource dataSource }
+   * @param jpaVendorAdapter {@link ConfigJpa#jpaVendorAdapter jpaVendorAdapter }
+   * @return EntityManagerFactory
    */
   @Bean
   public EntityManagerFactory entityManagerFactory(DataSource dataSource, JpaVendorAdapter
