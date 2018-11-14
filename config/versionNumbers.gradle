@@ -6,14 +6,18 @@ buildscript {
         //plugins
         checkstyleVersion = "8.12"
         grettyVersion = "2.0.0"
-            postgresqlVersion = "42.2.5"
-            c3p0Version="0.9.5.2"
-            log4j2Jdbc4Version = "1.16"
         sonarVersion = "2.6.2"
         flywayVersion = "5.1.4"
 
+        //db
+        postgresqlVersion = "42.2.5"
+        c3p0Version="0.9.5.2"
+        log4j2Jdbc4Version = "1.16"
+        oracleVersion = "12.2.0.1"
+
         //dependências
         springVersion = "4.3.18.RELEASE"
+        springDataVersion = "2.0.10.RELEASE"
         thymeleafVersion = "3.0.9.RELEASE"
         logback = "0.9.26"
         slf4jVersion = "1.7.25"
@@ -21,6 +25,11 @@ buildscript {
         eclipseLinkVersion = "2.7.3"
         springDataVersion = "2.0.10.RELEASE"
         jacksonVersion = "2.9.2"
+
+        // Test
+        groovyVersion = "2.5.2"
+        spockVersion = "1.2-groovy-2.5"
+
 
     }
 }

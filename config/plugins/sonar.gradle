@@ -6,7 +6,22 @@ buildscript {
     }
 }
 
-
 System.setProperty("sonar.host.url", "http://localhost:9000")
+System.setProperty("sonar.tests", "src/test/groovy")
+System.setProperty("sonar.junit.reportsPath", "${project.buildDir}/test-results/test/")
 
-apply plugin:  org.sonarqube.gradle.SonarQubePlugin
+System.setProperty("sonar.java.binaries","${project.buildDir}/classes/java/main")
+System.setProperty("sonar.java.test.binaries", "${project.buildDir}/classes/java/test")
+
+System.setProperty("sonar.groovy.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec")
+
+System.setProperty("sonar.groovy.binaries","${project.buildDir}/classes/groovy/main")
+System.setProperty("sonar.groovy.test.binaries", "${project.buildDir}/classes/groovy/test")
+
+
+
+
+//System.setProperty("sonar.binaries", "${project.buildDir}/classes")
+
+
+apply plugin:  Class.forName("org.sonarqube.gradle.SonarQubePlugin")

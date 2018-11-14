@@ -1,42 +1,40 @@
-
 /* Dados do projeto*/
 group = "com.brunorozendo"
 version = "1.0"
 
-
 /**
-*  Obrigatório: Configuração para o próprio gradle
-*/
+ *  Obrigatório: Configuração para o próprio gradle
+ */
 buildscript {
     repositories repositorioLocal
 }
 
 /**
-*  Obrigatório: Precisa informar onde buscar as dependencias
-*/
+ *  Obrigatório: Precisa informar onde buscar as dependencias
+ */
 repositories repositorioLocal
 
 
 
 apply plugin: 'war'
+apply plugin: 'groovy'
+apply plugin: 'jacoco'
 apply from: 'config/versionNumbers.gradle'
 apply from: 'config/plugins/checkstyle.gradle'
 apply from: 'config/plugins/sonar.gradle'
 //apply from: 'config/plugins/jetty.gradle'
-apply from: 'config/plugins/tomcat.gradle'
+//apply from: 'config/plugins/tomcat.gradle'
 apply from: 'config/plugins/flyway.gradle'
 
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-
-
 /**
-*  Obrigatório: Simples configuração para garantir o encode
-*/
+ *  Obrigatório: Simples configuração para garantir o encode
+ */
 tasks.withType(JavaCompile) {
-  options.encoding = "UTF-8"
+    options.encoding = "UTF-8"
 }
 
 /**
@@ -44,11 +42,43 @@ tasks.withType(JavaCompile) {
  * mas somente para as views(html's)
  *
  */
+/*
 sourceSets {
     main {
         resources {
             srcDir 'src/main/view'
         }
+        java{
+            exclude 'src/main/groovy'
+        }
+
+    }
+    test{
+        java{
+            srcDir 'src/test/groovy'
+            exclude 'src/test/java'
+        }
+    }
+}
+*/
+
+jacocoTestReport {
+    group = "reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled true
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+
+test.finalizedBy jacocoTestReport
+
+
+test{
+    jacoco{
+        destinationFile = file("build/jacoco/jacoco-ut.exec")
     }
 }
 
@@ -65,10 +95,9 @@ dependencies {
      *  Obrigatório: está aplicação está contruido em cima do spring
      *  obs: o exlude 'commons-logging' é para poder usar o slf4j
      */
-    compile ("org.springframework:spring-webmvc:${springVersion}") {
+    compile("org.springframework:spring-webmvc:${springVersion}") {
         exclude group: 'commons-logging', module: 'commons-logging'
     }
-
 
     /**
      *  Obrigatório
@@ -98,13 +127,11 @@ dependencies {
      */
     compile "org.eclipse.persistence:org.eclipse.persistence.jpa:${eclipseLinkVersion}"
 
-
     /**
      *  Obrigatório: está aplicação está contruido em cima do spring-jpa
      *  Spring-jpa: criar a maoria dos metodos de um crud Ex= findAll, findById...
      */
     compile "org.springframework.data:spring-data-jpa:${springDataVersion}"
-
 
     /**
      * Obrigatório para o spring
@@ -112,7 +139,21 @@ dependencies {
      */
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
+    // Oracle database para testes
+    //compile ("com.oracle.jdbc:ojdbc8:${oracleVersion}"){
+    //  exclude group: 'commons-logging', module: 'commons-logging'
+    // }
 
-    compile 'com.oracle.jdbc:ojdbc8:12.2.0.1'
+    //Tests
+    //compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    testCompile "org.spockframework:spock-core:${spockVersion}"
 
+    //compile 'com.oracle.jdbc:ojdbc8:12.2.0.1'
+    compile "org.postgresql:postgresql:${postgresqlVersion}"
+    compile "com.mchange:c3p0:${c3p0Version}"
+
+}
+
+wrapper {
+    gradleVersion = "4.10.2"
 }
