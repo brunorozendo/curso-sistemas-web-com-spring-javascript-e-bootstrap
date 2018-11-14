@@ -13,9 +13,9 @@ public class SaborConverter implements Converter<String, Sabor> {
   }
 
   /***
-   * Convertesr de string para Sabor
-   * @param valid
-   * @param source
+   * <p>Convertesr de string para Sabor.</p>
+   * @param valid um Predicate&lt;String&gt;
+   * @param source uma String que representa o um Sabor. Ex: "Forte"
    * @return Sabor
    */
   public Sabor getSabor(Predicate<String> valid, String source) {
