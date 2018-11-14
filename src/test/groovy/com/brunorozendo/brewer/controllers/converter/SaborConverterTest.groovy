@@ -27,4 +27,15 @@ class SaborConverterTest extends Specification {
         thrown IllegalArgumentException
     }
 
+    def "teste convert descricao"(){
+        given:
+        def a = new SaborConverter()
+
+        when:
+        def r = a.convert("FORTE")
+
+        then:
+        r.getDescricao() == "Forte"
+    }
+
 }
