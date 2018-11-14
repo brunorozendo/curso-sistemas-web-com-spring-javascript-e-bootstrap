@@ -19,9 +19,4 @@ System.setProperty("sonar.groovy.binaries","${project.buildDir}/classes/groovy/m
 System.setProperty("sonar.groovy.test.binaries", "${project.buildDir}/classes/groovy/test")
 
 
-
-
-//System.setProperty("sonar.binaries", "${project.buildDir}/classes")
-
-
 apply plugin:  Class.forName("org.sonarqube.gradle.SonarQubePlugin")

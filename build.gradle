@@ -42,7 +42,7 @@ tasks.withType(JavaCompile) {
  * mas somente para as views(html's)
  *
  */
-/*
+
 sourceSets {
     main {
         resources {
@@ -60,7 +60,7 @@ sourceSets {
         }
     }
 }
-*/
+
 
 jacocoTestReport {
     group = "reporting"
