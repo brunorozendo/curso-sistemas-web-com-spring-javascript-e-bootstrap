@@ -6,16 +6,22 @@ import org.springframework.core.convert.converter.Converter;
 
 public class EstiloConverter implements Converter<String, Estilo> {
   @Override
-  public Estilo convert(String source) {
+  public Estilo convert(String id) {
     return getEstilo(
         s -> !s.isEmpty(),
-        source);
+        id);
   }
 
-  public Estilo getEstilo(Predicate<String> valid, String source) {
-    if (valid.test(source)) {
+  /***
+   * Conversor de string em Estilo
+   * @param valid
+   * @param id
+   * @return Estilo
+   */
+  public Estilo getEstilo(Predicate<String> valid, String id) {
+    if (valid.test(id)) {
       Estilo estilo = new Estilo();
-      estilo.setId(Integer.valueOf(source));
+      estilo.setId(Integer.valueOf(id));
       return estilo;
     }
     return null;

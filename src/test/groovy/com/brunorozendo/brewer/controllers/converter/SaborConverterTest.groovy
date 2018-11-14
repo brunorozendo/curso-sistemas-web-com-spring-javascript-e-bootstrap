@@ -3,6 +3,8 @@ package com.brunorozendo.brewer.controllers.converter
 import com.brunorozendo.brewer.model.entity.Sabor
 import spock.lang.Specification
 
+import java.util.function.Predicate
+
 class SaborConverterTest extends Specification {
 
     def "teste convert valido"(){
@@ -36,6 +38,35 @@ class SaborConverterTest extends Specification {
 
         then:
         r.getDescricao() == "Forte"
+    }
+
+
+    def "test convert methodo interno false"() {
+        Predicate<String> validarValor = {
+            false
+        }
+        given:
+        def a = new SaborConverter()
+
+        when:
+        def o = a.getSabor(validarValor, null )
+
+        then:
+        o == null
+    }
+
+    def "test convert methodo interno valido"() {
+        Predicate<String> validarValor = {
+            true
+        }
+        given:
+        def a = new SaborConverter()
+
+        when:
+        def o = a.getSabor(validarValor, "FORTE" )
+
+        then:
+        o == Sabor.FORTE
     }
 
 }
