@@ -46,4 +46,18 @@ class EstiloConverterTest extends Specification {
         o.id == 10
     }
 
+
+    def "test labmda"() {
+        given:
+        def a = new EstiloConverter()
+
+        when:
+        def o = a.getStringPredicate()
+
+        then:
+        !o.test(null)
+        o.test("10")
+        !o.test("")
+    }
+
 }

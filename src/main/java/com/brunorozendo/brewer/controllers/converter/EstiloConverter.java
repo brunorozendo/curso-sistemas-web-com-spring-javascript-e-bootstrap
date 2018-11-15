@@ -8,8 +8,12 @@ public class EstiloConverter implements Converter<String, Estilo> {
   @Override
   public Estilo convert(String id) {
     return getEstilo(
-        s -> !s.isEmpty(),
+        getStringPredicate(),
         id);
+  }
+
+  public Predicate<String> getStringPredicate() {
+    return s -> s != null && !s.trim().isEmpty();
   }
 
   /***
