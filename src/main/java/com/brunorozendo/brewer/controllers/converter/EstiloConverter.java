@@ -12,7 +12,7 @@ public class EstiloConverter implements Converter<String, Estilo> {
         id);
   }
 
-  public Predicate<String> getStringPredicate() {
+  private Predicate<String> getStringPredicate() {
     return s -> s != null && !s.trim().isEmpty();
   }
 
@@ -23,7 +23,7 @@ public class EstiloConverter implements Converter<String, Estilo> {
    * @param id uma String que cont&eacute;m o valor do id Ex: "10"
    * @return Estilo
    */
-  public Estilo getEstilo(Predicate<String> valid, String id) {
+  private Estilo getEstilo(Predicate<String> valid, String id) {
     if (valid.test(id)) {
       Estilo estilo = new Estilo();
       estilo.setId(Integer.valueOf(id));
