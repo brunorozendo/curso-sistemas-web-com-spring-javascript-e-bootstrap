@@ -6,6 +6,11 @@ buildscript {
     }
 }
 
+
+dependencies{
+    testCompile "org.spockframework:spock-core:${spockVersion}"
+}
+
 System.setProperty("sonar.host.url", "http://localhost:9000")
 System.setProperty("sonar.tests", "src/test/groovy")
 System.setProperty("sonar.junit.reportsPath", "${project.buildDir}/test-results/test/")
@@ -20,3 +25,41 @@ System.setProperty("sonar.groovy.test.binaries", "${project.buildDir}/classes/gr
 
 
 apply plugin:  Class.forName("org.sonarqube.gradle.SonarQubePlugin")
+apply plugin: 'groovy'
+apply plugin: 'jacoco'
+
+
+sourceSets {
+    main {
+        java{
+            exclude 'src/main/groovy'
+        }
+    }
+    test{
+        java{
+            srcDir 'src/test/groovy'
+            exclude 'src/test/java'
+        }
+    }
+}
+
+
+jacocoTestReport {
+    group = "reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled true
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+
+test.finalizedBy jacocoTestReport
+
+
+test{
+    jacoco{
+        destinationFile = file("build/jacoco/jacoco-ut.exec")
+    }
+}

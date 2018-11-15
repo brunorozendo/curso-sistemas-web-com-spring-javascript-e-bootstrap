@@ -7,18 +7,18 @@ import java.util.function.Predicate
 class EstiloConverterTest extends Specification {
 
     def "test convert usando pelo spring"() {
-        given:
+        given: "criar object de Estilo"
         def a = new EstiloConverter()
 
-        when:
+        when: "executar metodo de conversao"
         def o = a.convert("10")
 
-        then:
+        then:" validar resultado da conversao"
         o.id == 10
 
     }
 
-    def "test convert methodo interno false"() {
+    def "test convert methodo interno retornado false"() {
         Predicate<String> validarValor = {
             false
         }
@@ -32,7 +32,7 @@ class EstiloConverterTest extends Specification {
         o == null
     }
 
-    def "test convert methodo interno valido"() {
+    def "test convert methodo interno retornado valido"() {
         Predicate<String> validarValor = {
             true
         }

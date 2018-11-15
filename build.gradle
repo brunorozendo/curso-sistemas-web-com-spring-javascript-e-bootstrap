@@ -17,8 +17,6 @@ repositories repositorioLocal
 
 
 apply plugin: 'war'
-apply plugin: 'groovy'
-apply plugin: 'jacoco'
 apply from: 'config/versionNumbers.gradle'
 apply from: 'config/plugins/checkstyle.gradle'
 apply from: 'config/plugins/sonar.gradle'
@@ -48,39 +46,9 @@ sourceSets {
         resources {
             srcDir 'src/main/view'
         }
-        java{
-            exclude 'src/main/groovy'
-        }
-
-    }
-    test{
-        java{
-            srcDir 'src/test/groovy'
-            exclude 'src/test/java'
-        }
     }
 }
 
-
-jacocoTestReport {
-    group = "reporting"
-    description = "Generate Jacoco coverage reports after running tests."
-    reports {
-        xml.enabled true
-        html.enabled false
-        csv.enabled false
-    }
-}
-
-
-test.finalizedBy jacocoTestReport
-
-
-test{
-    jacoco{
-        destinationFile = file("build/jacoco/jacoco-ut.exec")
-    }
-}
 
 
 dependencies {
@@ -139,16 +107,8 @@ dependencies {
      */
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
-    // Oracle database para testes
-    //compile ("com.oracle.jdbc:ojdbc8:${oracleVersion}"){
-    //  exclude group: 'commons-logging', module: 'commons-logging'
-    // }
 
-    //Tests
-    //compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    testCompile "org.spockframework:spock-core:${spockVersion}"
-
-    //compile 'com.oracle.jdbc:ojdbc8:12.2.0.1'
+    //Database jdbc
     compile "org.postgresql:postgresql:${postgresqlVersion}"
     compile "com.mchange:c3p0:${c3p0Version}"
 
@@ -157,3 +117,4 @@ dependencies {
 wrapper {
     gradleVersion = "4.10.2"
 }
+
