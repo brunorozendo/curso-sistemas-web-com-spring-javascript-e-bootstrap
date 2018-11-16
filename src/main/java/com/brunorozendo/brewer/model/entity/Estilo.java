@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_estilo")
@@ -20,39 +22,21 @@ public class Estilo implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_estilo")
+  @Getter
+  @Setter
   private Integer id;
 
   @NotBlank
   @Size(max = 20)
   @Column(name = "tx_nome")
+  @Getter
+  @Setter
   private String nome;
 
   @OneToMany(mappedBy = "estilo")
+  @Getter
+  @Setter
   private Set<Cerveja> cervejas;
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public Set<Cerveja> getCervejas() {
-    return cervejas;
-  }
-
-  public void setCervejas(Set<Cerveja> cervejas) {
-    this.cervejas = cervejas;
-  }
 
 
   @Override
