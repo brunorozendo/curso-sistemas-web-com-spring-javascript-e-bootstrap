@@ -6,58 +6,59 @@ import java.util.function.Predicate
 
 class EstiloConverterTest extends Specification {
 
-    def "test convert usando pelo spring"() {
+    def "testa o metodo convert usado pelo spring"() {
         given: "criar object de Estilo"
         def a = new EstiloConverter()
 
         when: "executar metodo de conversao"
         def o = a.convert("10")
 
-        then:" validar resultado da conversao"
+        then:" validar resultado da conversao: deve ser um objeto válido"
         o.id == 10
 
     }
 
-    def "test convert methodo interno retornado false"() {
+    def "testa convert methodo interno:  retornado false"() {
         Predicate<String> validarValor = {
             false
         }
-        given:
+        given: "criar uma instância do 'EstiloConverter'"
         def a = new EstiloConverter()
 
-        when:
+        when: 'executar methodo de interno que faz a conversao'
         def o = a.getEstilo(validarValor, null )
 
-        then:
+        then: "restuldado deve ser nulll"
         o == null
     }
 
-    def "test convert methodo interno retornado valido"() {
+    def "test convert methodo interno retornado true"() {
         Predicate<String> validarValor = {
             true
         }
-        given:
+        given: "criar uma instância do 'EstiloConverter'"
         def a = new EstiloConverter()
 
-        when:
+        when:'executar methodo de interno que faz a conversao'
         def o = a.getEstilo(validarValor, "10" )
 
-        then:
+        then: "restuldado deve ser deve ser um objeto válido"
         o.id == 10
     }
 
 
-    def "test labmda"() {
-        given:
+    def "testando a lambda"() {
+        given: "criar uma instância do 'EstiloConverter'"
         def a = new EstiloConverter()
 
-        when:
+        when: "recupera a lamda que faz a validação"
         def o = a.getStringPredicate()
 
-        then:
+        then:" tests usando a lambda"
         !o.test(null)
         o.test("10")
         !o.test("")
+        !o.test("z")
     }
 
 }

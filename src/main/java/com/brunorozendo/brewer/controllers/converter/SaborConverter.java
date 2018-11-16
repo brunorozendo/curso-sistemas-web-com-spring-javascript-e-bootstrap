@@ -1,6 +1,7 @@
 package com.brunorozendo.brewer.controllers.converter;
 
 import com.brunorozendo.brewer.model.entity.Sabor;
+import com.google.common.base.Enums;
 import java.util.function.Predicate;
 import org.springframework.core.convert.converter.Converter;
 
@@ -8,17 +9,14 @@ public class SaborConverter implements Converter<String, Sabor> {
 
   @Override
   public Sabor convert(String source) {
-    Predicate<String> valid = s -> !s.isEmpty();
-    return getSabor(valid, source);
+    return getSabor(getStringPredicate(), source);
   }
 
-  /***
-   * <p>Convertesr de string para Sabor.</p>
-   * @param valid um Predicate&lt;String&gt;
-   * @param source uma String que representa o um Sabor. Ex: "Forte"
-   * @return Sabor
-   */
-  public Sabor getSabor(Predicate<String> valid, String source) {
+  private Predicate<String> getStringPredicate() {
+    return s -> Enums.getIfPresent(Sabor.class, s).isPresent();
+  }
+
+  private Sabor getSabor(Predicate<String> valid, String source) {
     if (valid.test(source)) {
       return Sabor.valueOf(source);
     }

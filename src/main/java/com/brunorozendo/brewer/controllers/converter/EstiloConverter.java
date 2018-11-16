@@ -1,6 +1,7 @@
 package com.brunorozendo.brewer.controllers.converter;
 
 import com.brunorozendo.brewer.model.entity.Estilo;
+import com.google.common.primitives.Ints;
 import java.util.function.Predicate;
 import org.springframework.core.convert.converter.Converter;
 
@@ -13,16 +14,10 @@ public class EstiloConverter implements Converter<String, Estilo> {
   }
 
   private Predicate<String> getStringPredicate() {
-    return s -> s != null && !s.trim().isEmpty();
+    return s -> s != null && !s.trim().isEmpty() && Ints.tryParse(s) != null;
   }
 
-  /***
-   * <p>Conversor de string em Estilo.</p>
-   *
-   * @param valid um Predicate&lt;String&gt;
-   * @param id uma String que cont&eacute;m o valor do id Ex: "10"
-   * @return Estilo
-   */
+
   private Estilo getEstilo(Predicate<String> valid, String id) {
     if (valid.test(id)) {
       Estilo estilo = new Estilo();

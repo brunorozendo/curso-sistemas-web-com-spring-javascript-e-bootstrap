@@ -7,37 +7,27 @@ import java.util.function.Predicate
 
 class SaborConverterTest extends Specification {
 
-    def "teste convert valido"(){
-        given:
+    def "teste do converter retornado objeto válido valido"(){
+        given:  "criar uma instância do 'SaborConverter'"
         def a = new SaborConverter()
 
-        when:
+        when: "executar metodo de conversao"
         def o = a.convert("FORTE")
 
-        then:
+        then: "o resultado é um objero valido"
         o == Sabor.FORTE
+        o.getDescricao() == "Forte"
     }
 
     def "teste convert invalido"(){
-        given:
+        given:  "criar uma instância do 'SaborConverter'"
         def a = new SaborConverter()
 
-        when:
-        a.convert("na")
+        when: "executar metodo de conversao"
+        def f = a.convert("na")
 
-        then:
-        thrown IllegalArgumentException
-    }
-
-    def "teste convert descricao"(){
-        given:
-        def a = new SaborConverter()
-
-        when:
-        def r = a.convert("FORTE")
-
-        then:
-        r.getDescricao() == "Forte"
+        then: "resultado deve ser null"
+        f == null
     }
 
 
@@ -45,13 +35,13 @@ class SaborConverterTest extends Specification {
         Predicate<String> validarValor = {
             false
         }
-        given:
+        given:  "criar uma instância do 'SaborConverter'"
         def a = new SaborConverter()
 
-        when:
+        when:'executar methodo de interno que faz a conversao'
         def o = a.getSabor(validarValor, null )
 
-        then:
+        then: "resultado deve ser null"
         o == null
     }
 
@@ -59,14 +49,42 @@ class SaborConverterTest extends Specification {
         Predicate<String> validarValor = {
             true
         }
-        given:
+        given:  "criar uma instância do 'SaborConverter'"
         def a = new SaborConverter()
 
-        when:
+        when:'executar methodo de interno que faz a conversao'
         def o = a.getSabor(validarValor, "FORTE" )
 
-        then:
+        then: "o resultado é um objero valido"
         o == Sabor.FORTE
     }
+
+    def "test labmda"() {
+        given:  "criar uma instância do 'SaborConverter'"
+        SaborConverter a = new SaborConverter()
+
+        when: "recupera a lambda que faz a validação"
+        Predicate<String> o = a.getStringPredicate()
+
+        then: "validação da lambda"
+        o.test("FORTE")
+        !o.test("")
+        !o.test("vaiFalhar")
+    }
+
+
+
+    def "teste convert invalido lambda"(){
+        given:  "criar uma instância do 'SaborConverter'"
+        def a = new SaborConverter()
+        Predicate<String> o = a.getStringPredicate()
+
+        when: "Predicate<String> NÃO PODEM receber num como parametro"
+        o.test(null)
+
+        then: "resultado deve ser NullPointerException"
+        thrown NullPointerException
+    }
+
 
 }
