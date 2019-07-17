@@ -13,12 +13,12 @@ public class EstiloConverter implements Converter<String, Estilo> {
         id);
   }
 
-  private Predicate<String> getStringPredicate() {
+  Predicate<String> getStringPredicate() {
     return s -> s != null && !s.trim().isEmpty() && Ints.tryParse(s) != null;
   }
 
 
-  private Estilo getEstilo(Predicate<String> valid, String id) {
+  Estilo getEstilo(Predicate<String> valid, String id) {
     if (valid.test(id)) {
       Estilo estilo = new Estilo();
       estilo.setId(Integer.valueOf(id));

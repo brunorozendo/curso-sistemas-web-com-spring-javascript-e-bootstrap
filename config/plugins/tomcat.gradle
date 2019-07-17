@@ -3,7 +3,7 @@ buildscript {
     //noinspection GroovyAssignabilityCheck
     repositories repositorioLocal
     dependencies {
-        classpath "org.akhikhl.gretty:gretty:${grettyVersion}"
+        classpath "gradle.plugin.org.gretty:gretty:${grettyVersion}"
     }
 }
 

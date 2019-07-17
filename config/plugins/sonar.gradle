@@ -11,7 +11,7 @@ dependencies{
     testCompile "org.spockframework:spock-core:${spockVersion}"
 }
 
-System.setProperty("sonar.host.url", "http://localhost:9000")
+System.setProperty("sonar.host.url", "http://192.168.15.102:9000")
 System.setProperty("sonar.tests", "src/test/groovy")
 System.setProperty("sonar.junit.reportsPath", "${project.buildDir}/test-results/test/")
 

@@ -21,12 +21,12 @@ apply from: 'config/versionNumbers.gradle'
 apply from: 'config/plugins/checkstyle.gradle'
 apply from: 'config/plugins/sonar.gradle'
 //apply from: 'config/plugins/jetty.gradle'
-//apply from: 'config/plugins/tomcat.gradle'
+apply from: 'config/plugins/tomcat.gradle'
 apply from: 'config/plugins/flyway.gradle'
 
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_12
+targetCompatibility = JavaVersion.VERSION_12
 
 /**
  *  Obrigatório: Simples configuração para garantir o encode
@@ -114,8 +114,13 @@ dependencies {
     compile "org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:${log4j2Jdbc4Version}"
 
 
+    /**
+     * Opcional
+     * utiliártios
+     */
     compile "com.google.guava:guava:${guavaVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
 
 

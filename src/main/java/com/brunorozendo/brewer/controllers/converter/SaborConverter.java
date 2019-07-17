@@ -12,11 +12,11 @@ public class SaborConverter implements Converter<String, Sabor> {
     return getSabor(getStringPredicate(), source);
   }
 
-  private Predicate<String> getStringPredicate() {
+  Predicate<String> getStringPredicate() {
     return s -> Enums.getIfPresent(Sabor.class, s).isPresent();
   }
 
-  private Sabor getSabor(Predicate<String> valid, String source) {
+  Sabor getSabor(Predicate<String> valid, String source) {
     if (valid.test(source)) {
       return Sabor.valueOf(source);
     }

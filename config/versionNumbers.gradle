@@ -5,7 +5,7 @@ buildscript {
 
         //plugins
         checkstyleVersion = "8.12"
-        grettyVersion = "2.0.0"
+        grettyVersion = "2.3.1"
         sonarVersion = "2.6.2"
         flywayVersion = "5.1.4"
 
@@ -22,15 +22,15 @@ buildscript {
         logback = "0.9.26"
         slf4jVersion = "1.7.25"
         hibernatewValidatorVersion = "6.0.12.Final"
-        eclipseLinkVersion = "2.7.3"
+        eclipseLinkVersion = "2.7.4"
         springDataVersion = "2.0.10.RELEASE"
         jacksonVersion = "2.9.2"
         guavaVersion = "27.0-jre"
-        lombokVersion = "1.18.4"
+        lombokVersion = "1.18.8"
 
         // Test
         groovyVersion = "2.5.2"
-        spockVersion = "1.2-groovy-2.5"
+        spockVersion = "1.3-groovy-2.5"
 
 
     }
