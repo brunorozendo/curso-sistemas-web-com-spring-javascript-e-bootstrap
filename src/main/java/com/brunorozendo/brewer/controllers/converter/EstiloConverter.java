@@ -1,7 +1,6 @@
 package com.brunorozendo.brewer.controllers.converter;
 
 import com.brunorozendo.brewer.model.entity.Estilo;
-import com.google.common.primitives.Ints;
 import java.util.function.Predicate;
 import org.springframework.core.convert.converter.Converter;
 
@@ -14,7 +13,15 @@ public class EstiloConverter implements Converter<String, Estilo> {
   }
 
   Predicate<String> getStringPredicate() {
-    return s -> s != null && !s.trim().isEmpty() && Ints.tryParse(s) != null;
+    return s -> {
+      try {
+        String value = (s != null)  ? s.trim() : "";
+        Integer.valueOf(value);
+      } catch (NumberFormatException e) {
+        return false;
+      }
+      return true;
+    };
   }
 
 

@@ -118,7 +118,6 @@ dependencies {
      * Opcional
      * utiliártios
      */
-    compile "com.google.guava:guava:${guavaVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 

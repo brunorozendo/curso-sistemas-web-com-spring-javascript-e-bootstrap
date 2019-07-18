@@ -79,11 +79,11 @@ class SaborConverterTest extends Specification {
         def a = new SaborConverter()
         Predicate<String> o = a.getStringPredicate()
 
-        when: "Predicate<String> NÃO PODEM receber num como parametro"
+        when: "Predicate<String> NÃO PODEM receber null como parametro"
         o.test(null)
 
         then: "resultado deve ser NullPointerException"
-        thrown NullPointerException
+        notThrown()
     }
 
 
